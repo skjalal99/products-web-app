@@ -19,6 +19,7 @@
 .landing-bg{
         background: linear-gradient(  45deg,rgba(29, 236, 197, 0.7),rgba(91, 14, 214, 0.7) 100%); 
         height:100%;
+        padding:0!important;
  }
 
  .logo-pos{
@@ -29,7 +30,7 @@
     color:#fff;
  }
 
-  a{
+  a.first{
       position: relative;
       display: inline-block;
       padding: 25px 30px;
@@ -43,6 +44,34 @@
       margin-right: 50px;
      
   }
+  a.two{
+    position: relative;
+    display: inline-block;
+    padding: 25px 30px;
+    margin: 40px 0;
+    color: #03e9f4;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    margin-right: 50px;
+   
+}
+a.three{
+    position: relative;
+    display: inline-block;
+    padding: 25px 30px;
+    margin: 40px 0;
+    color: #03e9f4;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    margin-right: 50px;
+   
+}
   a.first:hover{
       background: #03e9f4;
       color: #050801;
@@ -73,9 +102,9 @@
   /* a:nth-child(1){
       filter: hue-rotate(270deg);
   } */
-  a:nth-child(2){
+  /* a:nth-child(2){
       filter: hue-rotate(110deg);
-  }
+  } */
   a span{
       position: absolute;
       display: block;
@@ -376,4 +405,123 @@ a.three span:nth-child(4){
     width: 100%;
   }
   
-    /* Neon 2 animated end */
+    /* =========Neon 2 animated end========= */
+
+    /* ===========video css================== */
+    .txt-white{color:#fff;}
+    section {
+        position: relative;
+        /* background-color: rgb(109, 7, 7); */
+        height: 100%;
+        min-height: 25rem;
+        width: 100%;
+        overflow: hidden;
+      }
+
+    section .overlay-vid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        /* background-color: black; */
+        /* background: linear-gradient(90deg,transparent,#00fff2); */
+        /* background: linear-gradient(  45deg,rgba(29, 236, 197, 0.7),rgba(91, 14, 214, 0.7) 100%);  */
+        /* background: linear-gradient( 45deg,rgb(0 249 145),rgb(136 160 0 / 70%) 100%); */
+        /* background: linear-gradient(  45deg,rgba(29, 236, 197, 0.7),rgba(91, 14, 214, 0.7) 100%); */
+        /* background: linear-gradient( 45deg,rgba(29, 236, 197, 0.7),rgb(138 214 17 / 70%) 100%); */
+        background-image: url('../images/jawdah_ceramics.png'), 
+        linear-gradient(to bottom, #ADB2B6, #ABAEB3);
+        background-size: cover;
+        opacity: 0.7;
+        z-index: 1;
+      }
+      
+      
+      section video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: 100%;
+        
+        z-index: 0;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+      
+      section .container {
+        position: relative;
+        z-index: 2;
+      }
+      
+      /* ==========Login CSS================ */
+
+      .user_card {
+        height: 420px;
+        width: 350px;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: #f39c12;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+
+    }
+    .brand_logo_container {
+        position: absolute;
+        height: 143px;
+        width: 140px;
+        top: -82px;
+        border-radius: 50%;
+        background: #8defff;
+        padding: 0px;
+        text-align: center;
+    }
+    .brand_logo {
+        position:relative;
+        top: 4px;
+        right: 12px;
+        height: 140px;
+        width: auto;
+        border-radius: 50%;
+        /* border: 2px solid white; */
+    }
+    .form_container1 {
+        margin-top: 100px;
+    }
+    .login_btn {
+        width: 100%;
+        background: #c0392b !important;
+        color: white !important;
+    }
+    .login_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+    .login_container {
+        padding: 0 2rem;
+    }
+    .input-group-text-login {
+        background: #c0392b !important;
+        color: white !important;
+        border: 0 !important;
+        border-radius: 0.25rem 0 0 0.25rem !important;
+        padding: 0.7em;
+    }
+    .input_user,
+    .input_pass:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+    .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+        background-color: #c0392b !important;
+    }
