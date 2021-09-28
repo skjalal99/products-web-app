@@ -41,7 +41,7 @@
                                 <a href="ceramics/login.php" class="first"><span></span><span></span><span></span><span></span>
 
                                 <img src="assets/images/ceramic.png" height="200" alt="">
-                                test 2
+                                
                                 </a>
 
                                 </div>
