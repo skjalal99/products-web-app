@@ -1,22 +1,23 @@
 <?php include('includes/header.php');?>
 
 
+
+<style>
+
+body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; 
+      background: #050801;
+      font-family: 'Raleway', sans-serif;
+      font-weight: bold;
+  }
+</style>
+
 <div class="container-fluid landing-bg" >
     
-<!-- <section >
-  <div class="overlay-wcs"></div>
-  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="assets/video/al-jawdah.mp4" type="video/mp4">
-  </video>
-  <div class="container h-100">
-    <div class="d-flex h-100 text-center align-items-center">
-      <div class="w-100 text-white">
-        <h1>Web Coder Skull</h1>
-        <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>
-      </div>
-    </div>
-  </div>
-</section> -->
+
 
 
   <section>
