@@ -1,4 +1,4 @@
-<div class="container "><div class="row"><div class="home-top-line"></div></div></div>
+<!-- <div class="container "><div class="row"><div class="home-top-line"></div></div></div> -->
 
   <div class="container">
     <div class="row d-flex">
@@ -16,7 +16,7 @@
                   <div class='square2' data-image="../assets/images/2-b.jpg">
                     <div class="square-container2">
                       <div class="align-center"></div>
-                      <a href="#" target="_blank" class="boxshadow card-button">View Demos</a>
+                      <a href="sizes.php" target="_blank" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="flip-overlay"></div>
                   </div>
@@ -37,7 +37,7 @@
                   <div class='square2' data-image="../assets/images/2-b.jpg">
                     <div class="square-container2">
                       <div class="align-center"></div>
-                      <a href="#" target="_blank" class="boxshadow card-button">View Demos</a>
+                      <a href="<?php echo SITE_URL ?>ceramics/categories.php" target="_blank" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="flip-overlay"></div>
                   </div>
@@ -58,7 +58,7 @@
                   <div class='square2' data-image="../assets/images/2-b.jpg">
                     <div class="square-container2">
                       <div class="align-center"></div>
-                      <a href="#" target="_blank" class="boxshadow card-button">View Demos</a>
+                      <a href="Specifications.php" target="_blank" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="flip-overlay"></div>
                   </div>
@@ -79,7 +79,7 @@
                   <div class='square2' data-image="../assets/images/2-b.jpg">
                     <div class="square-container2">
                       <div class="align-center"></div>
-                      <a href="#" target="_blank" class="boxshadow card-button">View Demos</a>
+                      <a href="#" target="_blank" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="flip-overlay"></div>
                   </div>
