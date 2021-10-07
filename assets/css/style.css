@@ -37,7 +37,7 @@
       /* align-items: center; */
       /* height: 100vh; */
       /* background: #050801; */
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-weight: bold;
       background-image: url(../images/bg.png);
     background-size: cover;
@@ -1065,7 +1065,7 @@ a.three span:nth-child(4){
     }
    .prod_spec div{
         color:#000;
-        font-family: Raleway, 'sans-serif';
+        font-family: Roboto, 'sans-serif';
         font-size:14px;
         font-weight:normal;
         line-height: 1.5em;
@@ -1091,4 +1091,44 @@ a.three span:nth-child(4){
         margin-left:-10px;
         padding-right:5px;
 
+    }
+
+    /* ========Table css========== */
+    .table-spec{
+        margin-top:20px;
+        overflow-x: auto!important;
+
+    }
+    .btn-search-radio .btn{
+        margin:0!important;
+        padding: 10px 20px!important;
+
+    }
+    .table .thead-spec th{
+        font-family:Raleway,'sans-serif';
+        font-weight: 0;
+        border-top:4px solid greenyellow;
+        vertical-align: middle;
+        font-size:16px;
+        text-align:left;
+        color:greenyellow;
+    }
+    .table-view-button{
+        /* display:block; */
+        width:100%;
+        padding:4px 4px;
+        font-family:"Raleway", "open-sans";
+        font-weight:600;
+        color:#fff;
+        background:#FF2024;
+        margin:0 auto;
+        border-radius:2px;
+        text-decoration:none;
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffa067+0,ff2959+49,ff2024+100 */
+        background: #ffa067; /* Old browsers */
+        background: -moz-linear-gradient(-45deg,  #ffa067 0%, #ff2959 49%, #ff2024 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(-45deg,  #ffa067 0%,#ff2959 49%,#ff2024 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(135deg,  #ffa067 0%,#ff2959 49%,#ff2024 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa067', endColorstr='#ff2024',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     }
