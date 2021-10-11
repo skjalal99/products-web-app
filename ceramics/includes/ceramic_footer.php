@@ -15,5 +15,5 @@
    <script src="../assets/js/bootstrap.min.js"></script>
    <!-- MDB core JavaScript -->
    <script src="../assets/js/mdb.4.19.1.min.js"></script> 
-
+ 
 </html>

@@ -1,6 +1,6 @@
 <div class="main">
           <!-- Navbar one -->
-          <nav class="navbar navbar-expand-lg navbar-light bg-light top-bar">
+          <nav class="navbar navbar-expand-lg navbar-light bg-dark top-bar">
             <div class="container-fluid">
               <a class="navbar-brand" href=""></a>
               <a href="#" class="btn-sm btn-primary login">Logout</a>
@@ -19,22 +19,25 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo SITE_URL?>ceramics/index.php">Home</a>
                   </li>
+                 
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Sizes</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo SITE_URL?>ceramics/sizes.php">Sizes</a>
                   </li>
+                 
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Types</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo SITE_URL?>ceramics/categories.php">Categories</a>
                   </li>
+
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Specifications</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo SITE_URL?>ceramics/Specifications.php">Specifications</a>
                   </li>
                   
                 
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown link
+                     Others
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <li><a class="dropdown-item" href="#">1</a></li>
@@ -47,21 +50,3 @@
             </div>
           </nav>
         <!-- Navbar ends -->
-
-        <div class="container">
-                      <!-- <button type="button" class="btn btn-primary btn-floating">
-                        <i class="fas fa-download"></i>
-                      </button>
-                      
-
-                    <button type="button" class="btn btn-primary btn-rounded">Primary</button>
-                    <button type="button" class="btn btn-secondary btn-rounded">Secondary</button>
-                    <button type="button" class="btn btn-success btn-rounded">Success</button>
-                    <button type="button" class="btn btn-danger btn-rounded">Danger</button>
-                    <button type="button" class="btn btn-warning btn-rounded">Warning</button>
-                    <button type="button" class="btn btn-info btn-rounded">Info</button>
-                    <button type="button" class="btn btn-light btn-rounded">Light</button>
-                    <button type="button" class="btn btn-dark btn-rounded">Dark</button>
-                    <button type="button" class="btn btn-light btn-rounded">xy</button> -->
-                    
-        </div>
