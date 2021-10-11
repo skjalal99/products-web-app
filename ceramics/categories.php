@@ -1,4 +1,4 @@
-<?php include('includes/header.php');?>
+<?php include('../includes/header.php');?>
 
 <?php include('includes/ceramic_menu.php');?>
 
@@ -20,7 +20,7 @@
                   <div class='square2' data-image="../assets/images/2-b.jpg">
                     <div class="square-container2">
                       <div class="align-center"></div>
-                      <a href="<?php echo SITE_URL;?>ceramics/wall.php" target="_blank" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                      <a href="<?php echo SITE_URL;?>ceramics/wall.php" target="_self" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="flip-overlay"></div>
                   </div>
@@ -41,7 +41,7 @@
                   <div class='square2' data-image="../assets/images/2-b.jpg">
                     <div class="square-container2">
                       <div class="align-center"></div>
-                      <a href="<?php echo SITE_URL;?>ceramics/floor.php" target="_blank" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                      <a href="<?php echo SITE_URL;?>ceramics/floor.php" target="_self" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="flip-overlay"></div>
                   </div>
@@ -62,7 +62,7 @@
     <div class='square2' data-image="../assets/images/2-b.jpg">
       <div class="square-container2">
         <div class="align-center"></div>
-        <a href="<?php echo SITE_URL;?>ceramics/roof.php" target="_blank" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+        <a href="<?php echo SITE_URL;?>ceramics/roof.php" target="_self" class="boxshadow card-button">View All <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
       </div>
       <div class="flip-overlay"></div>
     </div>
@@ -79,6 +79,6 @@
 
 
 
+<?php include('includes/ceramic_footer.php');?>
 
-
-<?php include('includes/footer.php');?>
+<?php include('../includes/footer.php');?>

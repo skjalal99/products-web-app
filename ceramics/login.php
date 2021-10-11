@@ -1,6 +1,6 @@
 
 
-<?php include('includes/header.php');?>
+<?php include('../includes/header.php');?>
 
 <style>
 	body,
@@ -60,3 +60,9 @@
 			</div>
 		</div>
 	</div>
+
+	
+
+
+
+<?php include('../includes/footer.php');?>

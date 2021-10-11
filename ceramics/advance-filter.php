@@ -1,21 +1,13 @@
 <?php include('../includes/header.php');?>
 
 <?php include('includes/ceramic_menu.php');?>
-<style>
-
-
-
-</style>
-
-
 
 <div class="container-fluid">
-<h1 class="main-title">All Tiles specifcation</h1>
-
-        <div class="table-wrapper">
-             <div class="row">
-      
-                    <div class="col-sm-2">
+    <h1 class="main-title">Advance Filters Page</h1>
+        <div class="row">
+     
+            <form class="row g-3">
+                    <div class="col-auto">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text" ><span class="input-group-addon"><i class="fas fa-filter"></i></span></div>
@@ -28,7 +20,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-auto">
                         <div class="input-group">
                         <div class="input-group-prepend">
                                 <div class="input-group-text" ><span class="input-group-addon"><i class="fas fa-filter"></i></span></div>
@@ -36,51 +28,68 @@
                              <input type="text" class="form-control" id="search-model" placeholder="Model" aria-label="Model" aria-describedby="Model">
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-auto">
                         <div class="input-group">
-                            <select class="form-select"  name="" id="search-type" >
-                                <option selected>Select Category</option>
-                                <option value="wall">Wall</option>
-                                <option value="floor">Floor</option>
-                                <option value="roof">Roof</option>
+                        <div class="input-group-prepend">
+                                <div class="input-group-text" ><span class="input-group-addon"><i class="fas fa-filter"></i></span></div>
+                            </div>
+                             <input type="text" class="form-control" id="search-model" placeholder="color" aria-label="Model" aria-describedby="Model">
+                        </div>
+                    </div>
+                    
+                    <div class="col-auto">
+                        <div class="input-group">
+                        <div class="input-group-prepend">
+                                <div class="input-group-text" ><span class="input-group-addon"><i class="fa fa-filter"></i></span></div>
+                            </div>
+                            <select class="form-select"  name="" id="search-usage" >
+                                <option selected>Select Usage</option>
+                                <option value="wall">Indoor</option>
+                                <option value="floor">Outdoor</option>
+                                <option value="roof">Both</option>
                             </select>
                             
-                             <div class="input-group-prepend">
-                                <div class="input-group-text" ><span class="input-group-addon"><i class="fa fa-search"></i></span></div>
+                             
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="input-group">
+                        <div class="input-group-prepend">
+                                <div class="input-group-text" ><span class="input-group-addon"><i class="fa fa-filter"></i></span></div>
                             </div>
+                            <select class="form-select"  name="" id="search-effect" >
+                                <option selected>Select Effect</option>
+                                <option value="Glossy">Glossy</option>
+                                <option value="Matt">Matt</option>
+                                
+                            </select>
+                            
+                             
                         </div>
                     </div>
-                   
-
-
-                    <div class="col-sm-4 d-flex flex-row justify-content-end ">
-                    
-                        <div class="btn-group btn-search-radio" data-toggle="buttons">
-                            <label class="btn btn-info active">
-                                <input type="radio" name="status" value="all" checked="checked"> All
-                            </label>
-                            <label class="btn btn-success">
-                                <input type="radio" name="status" value="active"> Active
-                            </label>
-                            <label class="btn btn-warning">
-                                <input type="radio" name="status" value="inactive"> Inactive
-                            </label>
-                            <label class="btn btn-danger">
-                                <input type="radio" name="status" value="expired"> Expired
-                            </label>							
+                    <div class="col-auto">
+                        <div class="input-group">
+                        <div class="input-group-prepend">
+                                <div class="input-group-text" ><span class="input-group-addon"><i class="fa fa-filter"></i></span></div>
+                            </div>
+                            <select class="form-select"  name="" id="search-effect" >
+                                <option selected>Select Status</option>
+                                <option value="Glossy">Glossy</option>
+                                <option value="Matt">Matt</option>
+                                
+                            </select>
+                            
+                             
                         </div>
-                        
+                    </div>
+   
+                    <div class="d-flex justify-content-start col-auto">
+                        <a href="#" class="btn1 btn-primary ">Submit</a>
+                    </div>
+                </form>
+                <!-- ===Form ends== -->
 
-                    </div>
-                    <div class="col-sm-2 d-flex flex-row justify-content-end ">
-                    
-                    <a href="advance-filter.php" class="btn-sm btn-outline-primary ">Advanced Filters</a>
-                  
-                    </div>
- 
-                    
-                </div>
-                <!-- ====Row Ends==== -->
+         <div class="table-wrapper">   
 
             <div class="table-responsive table-spec">
             <table class="table table-dark table-striped table-hover ">
@@ -223,35 +232,18 @@
             </table>
         </div> 
         <!-- ========table-wrapper ends========= -->
-    </div>  
-    <!-- ======Table Responsive ends=========  -->
-    <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    </li>
-    <li class="page-item active"><a class="page-link " href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-</div> 
-<!-- ======container fluid ends========= -->
+
+
+
+
+        </div>
+    <!-- Row end -->
+</div>
+<!-- container end -->
+
+
+
 
 
 <?php include('includes/ceramic_footer.php');?>
-
 <?php include('../includes/footer.php');?>
-
-<?php include('model-cat.php');?>  
-
-
-
-
-
-
-
-

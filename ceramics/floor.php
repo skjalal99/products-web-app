@@ -1,4 +1,4 @@
-<?php include('includes/header.php');?>
+<?php include('../includes/header.php');?>
 
 <?php include('includes/ceramic_menu.php');?>
 
@@ -204,4 +204,6 @@
 
 
 
-<?php include('includes/footer.php');?>
+<?php include('includes/ceramic_footer.php');?>
+
+<?php include('../includes/footer.php');?>
