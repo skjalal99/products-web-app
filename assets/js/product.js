@@ -44,8 +44,83 @@ $(document).ready(function(){
         }
 
 
+    // ============table js================
 
-       
+   // $('[data-toggle="tooltip"]').tooltip();
+ 
+            $(".btn-group .btn").click(function(){
+                var inputValue = $(this).find("input").val();
+                if(inputValue != 'all'){
+                    var target = $('table tr[data-status="' + inputValue + '"]');
+                    $("table tbody tr").not(target).hide();
+                    target.fadeIn();
+                } else {
+                    $("table tbody tr").fadeIn();
+                }
+            });
+            // Changing the class of status label to support Bootstrap 4
+            var bs = $.fn.tooltip.Constructor.VERSION;
+            var str = bs.split(".");
+            if(str[0] == 4){
+                $(".label").each(function(){
+                    var classStr = $(this).attr("class");
+                    var newClassStr = classStr.replace(/label/g, "badge");
+                    $(this).removeAttr("class").addClass(newClassStr);
+                });
+            }
+
+            // Filter table rows based on searched term Size
+            $("#search-size").on("change", function() {
+                var term = $(this).val().toLowerCase();//alert(term);
+                $("table tbody tr").each(function(){
+                    $row = $(this);
+                    var name = $row.find("td:nth-child(2)").text().toLowerCase();
+                    console.log(name);
+                    //alert(name);
+                    if(name.search(term) < 0){                
+                        $row.hide();
+                    } else{
+                        $row.show();
+                    }
+                });
+            });
+            // Filter table rows based on searched term Model
+            $("#search-model").on("keyup", function() {
+                var term = $(this).val().toLowerCase();
+                $("table tbody tr").each(function(){
+                    $row = $(this);
+                    var name = $row.find("td:nth-child(3)").text().toLowerCase();
+                    console.log(name);
+                    //alert(name);
+                    if(name.search(term) < 0){                
+                        $row.hide();
+                    } else{
+                        $row.show();
+                    }
+                });
+            });
+            // Filter table rows based on searched term Categories
+            $("#search-type").on("change", function() {
+                var term = $(this).val().toLowerCase();
+                $("table tbody tr").each(function(){
+                    $row = $(this);
+                    var name = $row.find("td:nth-child(7)").text().toLowerCase();
+                    console.log(name);
+                    //alert(name);
+                    if(name.search(term) < 0){    
+                      
+                        $row.hide();
+                    } else{
+                        $row.show();
+                    }
+                });
+            });
+
+          
+
+
+
+
 
 
        

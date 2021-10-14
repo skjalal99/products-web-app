@@ -1,3 +1,6 @@
+ <!-- Style css-->
+ <link rel="stylesheet" href="../assets/css/style.css">
+
 <div class="main">
           <!-- Navbar one -->
           <nav class="navbar navbar-expand-lg navbar-light bg-dark top-bar">

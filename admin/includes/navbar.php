@@ -1,35 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-       
-        <!-- fonts -->
-        <link rel="stylesheet" type="text/css" href="../assets/fonts/PlayfairDisplay-VariableFont_wght.ttf" />
-        <link rel="stylesheet" type="text/css" href="../assets/fonts/DancingScript-VariableFont_wght.ttf" />
-        <link rel="stylesheet" type="text/css" href="../Roboto-regular.ttf" />
-        <!-- fonts ends -->
-        <!-- Jquery js -->
-        <script src="../assets/js/jquery-3.6.0.min.js"></script>
-        <!--  Bootstrap css-->
-        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-        <!-- Material Design Bootstrap css-->
-        <link rel="stylesheet" href="../assets/css/mdb.4.19.1.min.css">
-        <!-- Style css-->
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <!-- font-awesome all 5.15.4 css -->
-        <link rel="stylesheet" href="../assets/css/font-awesome.min.5.15.4.all_min.css">
-         <!-- animate.min.css -->
-         <!-- <link rel="stylesheet" href="../assets/css/jquery.animate.min.css">     -->
-        <!-- Product js -->
-         <script src="../assets/js/product.js"></script>
-
-    
-
-
-    </head>
-
-<body>
-<?php include('../config/conn.php')?>
+  
+<!-- ========== header start ========== -->
+<header class="header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-6">
+              <div class="header-left d-flex align-items-center">
+                <div class="menu-toggle-btn mr-20">
+                  <button id="menu-toggle" class="main-btn primary-btn btn-hover">
+                  <i class="fa fa-arrow-circle-left" id="toggle-arrow" aria-hidden="true"></i> Menu
+                  </button>
+                </div>
+                <div class="header-search d-none d-md-flex">
+                  <form action="#">
+                    <input type="text" placeholder="Search..." />
+                    <button><i class="lni lni-search-alt"></i></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-6">
+              <div class="header-right">
+               LOGOUT
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- ========== header end ========== -->
