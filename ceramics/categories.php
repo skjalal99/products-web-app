@@ -1,7 +1,5 @@
 <?php include('../includes/header.php');?>
-
 <?php include('includes/ceramic_menu.php');?>
-
 
 
 <div class="container mt-4">

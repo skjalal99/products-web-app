@@ -3,7 +3,6 @@
 <?php include('includes/ceramic_menu.php');?>
 
 
-
 <div class="container">
     <h1 class="main-title">All Roof Tiles</h1>
     <div class="row">
