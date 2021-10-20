@@ -31,4 +31,21 @@
     </head>
     
 <body>
-
+<?php
+          if(isset($_GET['page'])=="cat")
+          {
+            $category = "active";
+          }
+          elseif(isset($_GET['page'])=="size")
+          {
+            $size = "active";
+          }
+          elseif(isset($_GET['page'])=="atiles")
+          {
+            $atiles = "active";
+          }
+          elseif(isset($_GET['page'])=="modals")
+          {
+            $modals = "active";
+          }
+     ?>
