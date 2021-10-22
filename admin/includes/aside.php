@@ -1,8 +1,6 @@
 
 
 
-
-
 <!-- ======== sidebar-nav start =========== -->
 <aside class="sidebar-nav-wrapper">
 
@@ -17,7 +15,7 @@
   <!-- ===single item=== -->
   <ul>
       <li class="nav-item ">
-        <a href="#1" ><span class="icon"><i class="fas fa-user"></i></span>
+        <a href="<?php echo SITE_URL1;?>admin/users.php" ><span class="icon"><i class="fas fa-user"></i></span>
           <span class="text">User Control</span>
         </a>
       </li>
@@ -40,19 +38,24 @@
           </span>
           <span class="text">Ceramic</span>
         </a>
-        <ul id="d1" class="collapse show dropdown-nav"> 
+        <ul id="d1" class="collapse show dropdown-nav menu"> 
           <!-- show -->
+          
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/ceramics/sizes.php" class="active">Sizes</a>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/categories.php?page=cat" class="">Categories</a>
           </li>
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/ceramics/categories.php" class="">Categories</a>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/sizes.php?page=size" class="">Sizes</a>
+          </li>
+          
+          <li>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/tiles-upload.php?page=atiles" class="">Add Tiles</a>
           </li>
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/ceramics/tiles-upload.php" class="">Add Tiles</a>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/product-modal.php?page=modals" class="">Modals</a>
           </li>
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/ceramics/product-modal.php" class="">Models</a>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/properties.php" class="">Properties</a>
           </li>
         </ul>
       </li>

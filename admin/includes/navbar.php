@@ -20,7 +20,7 @@
             </div>
             <div class="col-lg-7 col-md-7 col-6">
               <div class="header-right">
-               LOGOUT
+               <a href="#" class="btn-sm btn-warning">Logout</a>
               </div>
             </div>
           </div>

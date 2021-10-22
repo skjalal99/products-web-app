@@ -31,6 +31,7 @@
     </head>
     
 <body>
+  <?php include('config/dbconn.php');?>
 <?php
           if(isset($_GET['page'])=="cat")
           {

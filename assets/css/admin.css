@@ -899,7 +899,7 @@ h6,
 
 .table tbody tr:last-child > * {
   border-bottom-color: transparent;
-  padding-bottom: 0px; }
+  }
 
 .table th h6 {
   font-weight: 500;
@@ -3760,3 +3760,30 @@ h6,
  .toggle-arrow{
     transform: rotate(180deg);
   }
+
+  /* ===========manage sizes========== */
+  .edit-tbl{
+    padding-right:10px;
+    color: #002bff !important;
+  }
+  .delete-tbl{
+    color: red!important;
+  }
+  .table-title{
+    padding:15px;
+    color: #fff!important;
+    
+  }
+ /* ==========.table============ */
+ .table-first{
+   width:5%;
+   text-align:center;
+ }
+ .thead-bg
+ {
+  background-color: #002056;
+  color: #fff;
+ }
+ table.table th, table.table td {
+  padding-left: 10px!important;
+ }
