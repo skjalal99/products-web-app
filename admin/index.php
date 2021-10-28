@@ -2,6 +2,7 @@
 
 <?php include('includes/aside.php');?>
 <?php include_once('config/dbconn.php');?>
+<?php include_once("config/functions.php");?>
 <?php
 if(!isset($_SESSION['User-Login']))
 {

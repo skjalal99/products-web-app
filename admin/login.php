@@ -1,5 +1,6 @@
 <?php include('../includes/header.php');?>
 <?php include_once('config/dbconn.php');?>
+<?php include_once("config/functions.php");?>
 
 <?php
 
