@@ -1,5 +1,15 @@
 <?php include('includes/header-admin.php');?>
 <?php include('includes/aside.php');?>
+<?php include_once('config/dbconn.php');?>
+<?php include_once("config/functions.php");?>
+<?php
+if(!isset($_SESSION['User-Login']))
+{
+	header("Location:login.php");
+}
+
+?>
+
 <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
       
@@ -60,39 +70,70 @@
                   <th>Role</th>
                   <th>Access</th>
                   <th>Status</th>
-                  <th>Actions</th>
+                   <th>Actions</th>
               </tr>
             </thead>
             <tbody>
+            <?php
+            $sno="1";
+                   
+                   $sql_users = "SELECT users.user_name,users.full_name,
+                   users.role,users.status,users.contact,users.password,
+                   company.co_name,company.description
+                   FROM ((users
+                   JOIN users_has_company ON users.id = users_has_company.users_id)
+                   JOIN company ON company.id = users_has_company.company_id);";
+
+                   $res_users = $conn->query($sql_users);
+
+                   if($res_users == TRUE)
+                   {
+                       $count1 = $res_users->num_rows;
+
+                       if($count1 >0)
+                       {
+                         
+                         while($row_users = $res_users->fetch_assoc()) 
+                         {
+                           $users = $row_users['user_name'] ;
+                           $full_name = $row_users['full_name'] ;
+                           $pass = md5($row_users['password']);
+                           $roles = $row_users['role'] ; 
+                           $contact = $row_users['contact'] ; 
+                           $access = $row_users['co_name'] ; 
+                           $status = $row_users['status'] ; 
+
+                          
+                 ?>
+              
               <tr>
-                <td scope="row" >1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>*******</td>
-                <td>+966-55xxxxxxx</td>
-                <td>Admin</td>
-                <td>All </td>
-                <td>Active</td>
-                  <td >
-                        <a href="" class="edit-tbl" data-bs-toggle="modal" data-bs-target="#edit-user"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#" class="delete-tbl" data-bs-toggle="modal"  data-bs-target="#delete-user"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                  </td>
-              </tr>
-              <tr>
-                <td scope="row" >2</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>*******</td>
-                <td>+966-55xxxxxxx</td>
-                <td>User</td>
-                <td>Cer </td>
-                <td>InActive</td>
+                <td ><?php echo $sno++;?></td>
+                <td ><?php echo $users;?></td>
+                <td ><?php echo $full_name;?></td>
+                <td ><?php echo $pass;?></td>
+                <td ><?php echo $contact;?></td>
+                <td ><?php echo $roles;?></td>
+                <td ><?php echo $access;?></td>
+                <td ><?php echo $status;?></td>
+           
+               
                   <td >
                         <a href="" class="edit-tbl" data-bs-toggle="modal" data-bs-target="#edit2"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
                         <a href="#" class="delete-tbl" data-bs-toggle="modal"  data-bs-target="#delete1"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
                   </td>
               </tr>
-           
+              <?php
+                      }
+                    }
+                    else
+                    {
+                      echo "No Data To Display";
+
+                    }
+
+                }
+
+              ?>
             </tbody>
             </table>
       </div>
