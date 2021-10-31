@@ -97,7 +97,7 @@ if(!isset($_SESSION['User-Login']))
                          {
                            $users = $row_users['user_name'] ;
                            $full_name = $row_users['full_name'] ;
-                           $pass = md5($row_users['password']);
+                           $pass = $row_users['password'];
                            $roles = $row_users['role'] ; 
                            $contact = $row_users['contact'] ; 
                            $access = $row_users['co_name'] ; 
