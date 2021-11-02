@@ -100,7 +100,7 @@
                 <td><span id="type-cat<?php echo $id;?>"><?php echo $type;?></span></td>
                 <td>
                   <span id="stat-cat<?php echo $id;?>">
-                    <?php if($status=='Yes'){echo "<div><span class='active-status'></span>Active</div>";}else{echo "<div><span class='inactive-status'></span>InActive</div>";};?></td>
+                    <?php if($status=='Yes'){echo "<div><span class='active-status'></span>Active</div>";}else{echo "<div><span class='inactive-status'></span>InActive</div>";};?>
                   </span>
                 <td>
                         <button class="edit-tbl"  value="<?php echo $id;?>" data-bs-toggle="modal" data-bs-target="#edit-cat"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></button>
@@ -279,7 +279,6 @@ if(isset($_REQUEST['final_del_cat']))
 {
   $id_cat = $_REQUEST['id1'];
   $sql_cat_del = "DELETE FROM categories WHERE ID ='$id_cat'";
-  echo $sql_cat_del;
   $res_cat_del = $conn->query($sql_cat_del);
  
 
