@@ -1,5 +1,8 @@
 <?php include('../includes/header-admin.php');?>
 <?php include('../includes/aside.php');?>
+<?php include_once('../config/dbconn.php'); ?>
+<?php include('../includes/login-check-admin.php'); ?>
+<?php include_once("../config/functions.php");?>
 <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
       
@@ -66,6 +69,29 @@
               </tr>
             </thead>
             <tbody>
+
+              <?php
+              
+              $sno = 1;
+
+              $sql = select1('properties');
+
+              $res = $conn->query($sql);
+
+              if($res == TRUE)
+              {
+                  $count = $res->num_rows;
+
+                  if($count >0)
+                  {
+                    while($row = $res->fetch_assoc()) 
+                    {
+                      $title = $row['title'] ;
+                      $description = $row['description'] ;
+                      $image = $row['image'] ;
+            ?>
+
+
               <tr>
                 <td scope="row" class="table-first">
                         <span class="custom-checkbox">
@@ -73,9 +99,10 @@
                           <label for="checkbox1"></label>
                         </span>
                 </td>
-                <td>Mark</td>
-                <td> Mark</td>
-                <td> Mark</td>
+                
+                <td><?php echo $image;?></td>
+                <td><?php echo $title;?></td>
+                <td><?php echo $description;?></td>
            
                 
                   <td >
@@ -83,7 +110,21 @@
                         <a href="#" class="delete-tbl" data-bs-toggle="modal"  data-bs-target="#delete-prop"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
                   </td>
               </tr>
-              
+              <?php
+                      }
+                    }
+                    else
+                    {
+                   echo '<tr >
+                      <td colspan="5">
+                              No Data to display!
+                              </span>
+                            </td>
+                      </tr >';
+                    }
+                }
+
+              ?>
            
             </tbody>
             </table>
