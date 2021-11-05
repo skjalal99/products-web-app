@@ -2,8 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-       
+<?php
+// Output Buffer Starts
+ob_start();
+// Start the session
+session_start();
 
+?>  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +32,14 @@
         <link rel="stylesheet" href="<?php echo SITE_URL1;?>assets/css/admin.css">
         <script src="<?php echo SITE_URL1;?>assets/js/admin.js"></script>
     
-
+        
     </head>
     
 <body>
-  <?php include('config/dbconn.php');?>
+<?php include("login-check-admin.php");?>
+
 <?php
+
           if(isset($_GET['page'])=="cat")
           {
             $category = "active";
