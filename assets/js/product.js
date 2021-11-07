@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-     alert("alert message");
+    //  alert("alert message");
   
 			// grab the initial top offset of the navigation 
             var stickyNavTop = $('.nav-scr').offset().top;
