@@ -1,0 +1,321 @@
+<?php include('../includes/header-admin.php');?>
+<?php include('../includes/aside.php');?>
+<?php include_once('../config/dbconn.php'); ?>
+<?php include('../includes/login-check-admin.php'); ?>
+<?php include_once("../config/functions.php");?>
+<!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      
+    <?php include('../includes/navbar.php');?>
+
+    <div class="container-fluid">
+
+  
+
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title mb-30">
+                <h2>Modals</h2><small>Dashboard</small>
+                </div>
+              </div>
+              <!-- end col -->
+              <div class="col-md-6">
+                <div class="breadcrumb-wrapper mb-30">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="../admin/index.php">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                         Modals
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- ========== title-wrapper end ========== -->
+
+      <div class="row bg-primary gx-0">
+        <div class="col-md-6"><h3 class="table-title">Modals</h3></div>
+        <div class="col-md-6">
+          <div class="float-end"> <button class="btn btn-success justify-content-end" data-bs-toggle="modal" data-bs-target="#add-new-modal">Add New <i class="fa fa-plus"></i></button></div>
+
+        </div>
+      </div>
+
+
+
+      <div class = "table-responsive  ">
+            <table class="table table-striped table-bordered text-center ">
+            <thead class="thead-bg">
+              <tr >
+                  <th scope="col" class="table-first" >
+                      <span class="custom-checkbox">
+                        <input type="checkbox" id="selectAllchecks">
+                        <label for="selectAllchecks"></label>
+                      </span>
+                  </th>
+                  <th>Model No. </th>
+                  <th style="width:60%">Pictures</th>
+                  <th>Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+            <?php
+              $sno = 1;
+
+              $sql_modal = "SELECT tiles.tile_model_no,group_concat(tiles_modal.image_thumb) as imgg
+              FROM tiles JOIN tiles_modal ON tiles.id = tiles_modal.tiles_id";
+
+              $res_modal = $conn->query($sql_modal);
+
+              if($res_modal == TRUE)
+              {
+                  $count_modal = $res_modal->num_rows;
+                 
+                  if($count_modal >0)
+                  {
+                    while($row_modal = $res_modal->fetch_assoc()) 
+                    {
+
+                      $model_no = $row_modal['tile_model_no'] ;
+                    echo  $img_thumb = $row_modal['imgg'] ;
+                     
+                // =========To display multiple images in single row======
+                      $pattern = "/[,\s:]/";
+                      $preg=preg_split($pattern, $img_thumb);
+ 
+            ?>
+
+              <tr>
+                <td scope="row" class="table-first">
+                        <span class="custom-checkbox">
+                          <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                          <label for="checkbox1"></label>
+                        </span>
+                </td>
+                <td><?php echo $model_no;?></td>
+                
+                <td>
+                    <?php
+                      foreach($preg as $arr_val)
+                        {
+                      
+                        ?>
+                            <img class="img-thumbnail" src="../../assets/images/<?php echo  $arr_val;?>"  width="80" alt="" srcset="">
+
+                        <?php
+
+                        }
+                    ?>
+                </td>
+           
+                  <td >
+                        <a href="" class="edit-tbl" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
+                        <a href="#" class="delete-tbl" data-bs-toggle="modal"  data-bs-target="#delete-modal"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+                  </td>
+              </tr>
+              
+              <?php
+                      }
+                    }
+                    else
+                    {
+                    echo '<tr >
+                      <td colspan="5">
+                              No Data to display!
+                              </span>
+                            </td>
+                      </tr >';
+                    }
+
+                }
+
+              ?>
+
+
+            </tbody>
+            </table>
+      </div>
+
+
+
+
+
+</div>
+<!-- ==== Container-fluid Ends ==== -->
+
+<!-- ======= Modal Add New Modal ========= -->
+<div class="modal fade" id="add-new-modal" tabindex="-1" aria-labelledby="add-new-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add-new-tiles">Add New Tiles</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="">
+            <div class="mb-3 row">
+                <label for="inputsizes" class="col-sm-4 col-form-label">Model No.</label>
+                <div class="col-sm-8">
+                  <select class="form-select  mb-3" aria-label=" example">
+                    <option selected>Selected</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputsizes" class="col-sm-4 col-form-label">Pictures</label>
+                <div class="col-sm-8">
+                <input type="file" class="form-select" name="files[]" multiple >
+                </div>
+            </div>
+            
+            <div class="mb-3 row">
+                <label for="inputsizes" class="col-sm-4 col-form-label">Status</label>
+                <div class="col-sm-8">
+              
+                <input class="form-check-input" type="checkbox" name="status"  checked>
+                <label class="form-check-label" >
+                  Active
+                </label>
+                <input class="form-check-input" type="checkbox" name="status"  >
+                <label class="form-check-label" >
+                  Canceled
+                </label>
+
+              </div>           
+            </div>
+
+        </form>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ======= Modal Add New Size ========= -->
+
+
+<!-- ========== Modal Delete========= -->
+
+<!-- Modal -->
+<div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="delete-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete-modal">Delete Tiles</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are You Sure ? You want to delete selected one.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete-modal2" data-bs-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="delete-modal2" tabindex="-1" aria-labelledby="delete-modal2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete-tiles2">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      2 Are You Sure ? You want to delete selected one.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== Modal Delete========= -->
+
+<!-- ========== Modal Edit========= -->
+<div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit-modal">Edit Tiles</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="">
+            <div class="mb-3 row">
+                <label for="inputsizes" class="col-sm-4 col-form-label">Model No.</label>
+                <div class="col-sm-8">
+                  <select class="form-select  mb-3" aria-label=" example">
+                    <option selected>Selected</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputsizes" class="col-sm-4 col-form-label">Pictures</label>
+                <div class="col-sm-8">
+                <img src="..." class="img-thumbnail" alt="...">
+                <img src="..." class="img-thumbnail" alt="...">
+                <img src="..." class="img-thumbnail" alt="...">
+                <img src="..." class="img-thumbnail" alt="...">
+                </div>
+            </div>
+            
+            <div class="mb-3 row">
+                <label for="inputsizes" class="col-sm-4 col-form-label">Status</label>
+                <div class="col-sm-8">
+              
+                <input class="form-check-input" type="checkbox" name="status"  checked>
+                <label class="form-check-label" >
+                  Active
+                </label>
+                <input class="form-check-input" type="checkbox" name="status"  >
+                <label class="form-check-label" >
+                  Canceled
+                </label>
+
+              </div>           
+            </div>
+
+        </form>      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ========== Modal Edit========= -->
+
+
+
+
+
+ <?php include('../includes/footer-admin.php');?>
+ 
+    </main>
+<!-- ======== main-wrapper end =========== -->
+
+
+<?php include('../includes/footer1.php');?>
