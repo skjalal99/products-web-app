@@ -64,6 +64,7 @@
                   <th>Icon</th>
                   <th>Title</th>
                   <th style="width:60%">Description</th>
+                  <th style="">Status</th>
                   <th>Action</th>
 
               </tr>
@@ -86,8 +87,10 @@
                   {
                     while($row = $res->fetch_assoc()) 
                     {
-                      $title = $row['title'] ;
+                      $id1 = $row['id'];
+                      $title = $row['title'];
                       $description = $row['description'] ;
+                      $status1 = $row['status1'] ;
                       $image = $row['image'] ;
             ?>
 
@@ -100,14 +103,15 @@
                         </span>
                 </td>
                 
-                <td><?php echo $image;?></td>
+                <td><img src="../../assets/images/properties/<?php echo $image;?>" width="60"></td>
                 <td><?php echo $title;?></td>
                 <td><?php echo $description;?></td>
+                <td><?php echo $status1;?></td>
            
                 
                   <td >
-                        <a href="" class="edit-tbl" data-bs-toggle="modal" data-bs-target="#edit-prop"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#" class="delete-tbl" data-bs-toggle="modal"  data-bs-target="#delete-prop"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+                        <a href="" class="edit-tbl edit_prop" val='<?php echo $id1;?>'data-bs-toggle="modal" data-bs-target="#edit-prop"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
+                        <a href="#" class="delete-tbl del_prop" data-bs-toggle="modal"  data-bs-target="#delete-prop"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
                   </td>
               </tr>
               <?php
@@ -146,36 +150,35 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="">
+      <form action="" method="POST" enctype= "multipart/form-data">
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Icon</label>
                 <div class="col-sm-8">
-                <img src="" class="img-thumbnail" width="40" height="40" alt="icon">
-                <input type="file" class="form-select" name=" " multiple >
+                      <input type="file" class="form-select" name="Aicon_img">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Title</label>
                 <div class="col-sm-8">
-                <input type="text" class="form-select" name="" >
+                  <input type="text" class="form-select" name="Aicon_title">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Description</label>
                 <div class="col-sm-8">
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" name="Aicon_desc"></textarea>
                 </div>
             </div>
             
             <div class="mb-3 row">
-                <label for="inputsizes" class="col-sm-4 col-form-label">Description</label>
+                <label for="inputsizes" class="col-sm-4 col-form-label">Status</label>
                 <div class="col-sm-8">
               
-                <input class="form-check-input" type="checkbox" name="status"  checked>
+                <input class="form-check-input" type="radio" value="Yes" name="Astatus"  checked>
                 <label class="form-check-label" >
                   Active
                 </label>
-                <input class="form-check-input" type="checkbox" name="status"  >
+                <input class="form-check-input" type="radio" value="No" name="Astatus"  >
                 <label class="form-check-label" >
                   Canceled
                 </label>
@@ -183,17 +186,112 @@
               </div>           
             </div>
 
-        </form>  
+ 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-dismiss="modal">Add</button>
+        <button type="submit" name='add_prop' class="btn btn-primary" data-bs-toggle="modal"  data-bs-dismiss="modal">Add</button>
       </div>
     </div>
+    </form> 
   </div>
 </div>
 <!-- ======= Modal Add New Size ========= -->
+  <?php
+  if(isset($_POST['add_prop']))
+  {
+    $Aicon_img = $_FILES['Aicon_img'];
+    $Aicon_title = $_REQUEST['Aicon_title'];
+    $Aicon_desc = $_REQUEST['Aicon_desc'];
+    $Astatus = $_REQUEST['Astatus'];
 
+    if($Astatus == 'Yes')
+    {
+      $Astatus = 'Active';
+    }
+    else{
+      $Astatus = 'InActive';
+    }
+
+    if(empty($Aicon_title) ||empty($Aicon_desc) ||empty($Astatus))
+    {
+      echo "<div class='alert alert-danger'>Pls fill the required field</div>";
+      die();
+
+    }
+
+   // print_r($Aicon_img);
+
+        if(!empty($Aicon_img['name']))
+        {
+
+                  // File upload configuration 
+                  $targetDir = "../../assets/images/properties/"; 
+                  $allowTypes = array('jpg','png','jpeg','gif'); 
+
+                  //auto renaming and getting extension of image
+                  $ext = explode('.', $Aicon_img['name']);
+                  $ext = end($ext);
+                   
+                  //Rename image
+                  $fileName1 = "Tile_Prop_".rand(00000,99999).'.'.$ext; // eg:tile_12321.jpg
+                   
+                  //Targeted Files Path to move
+                  $targetFilePath = $targetDir . $fileName1; 
+
+
+                  //
+                  if($Aicon_img['size']<='1000000')
+                  {
+
+                          // Check whether file type is valid 
+                          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                          if (in_array($fileType, $allowTypes))
+                              {
+                                      $source_dir = $_FILES["Aicon_img"]["tmp_name"];
+
+                                      // Upload file to server 
+                                      $move = move_uploaded_file($source_dir, $targetFilePath);
+                                            
+                                      if($move == TRUE)
+                                      {
+                                        echo "<div class='alert alert-primary'>uploaded Successfully</div>";
+                                      }
+
+
+                              }
+                                else
+                              { 
+                                  echo $errorUploadType = $_FILES["Aicon_img"]; 
+                              }
+
+                    
+                  }
+
+
+
+          
+        }//Empty ends..
+        else
+        {
+          echo "<div class='alert alert-danger'>Something Went Wrong!:Pls Check Empty Image Field</div>";
+        }
+
+          $sql1 = "INSERT INTO properties SET
+          title='$Aicon_title',
+          description='$Aicon_desc',
+          image='$fileName1',
+          status1='$Astatus'";
+
+
+$res1 = $conn->query($sql1) or die(mysqli_error($conn));
+
+if($res1 == TRUE){ echo "<div class='alert alert-primary'>Successfully Added </div>";}
+echo "<meta http-equiv='refresh' content='1'>";
+
+  }
+
+  ?>
 
 <!-- ========== Modal Delete========= -->
 
@@ -246,24 +344,24 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="">
+      <form action="" id='form2' enctype= "multipart/form-data">
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Icon</label>
                 <div class="col-sm-8">
-                <img src="" class="img-thumbnail" width="40" height="40" alt="icon">
-                <input type="file" class="form-select" name=" " multiple >
+                <img src="" class="img-thumbnail" id='img1' width="80" height="80" alt="icon">
+                <input type="file" class="form-select" name="prop_image"  >
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Title</label>
                 <div class="col-sm-8">
-                <input type="text" class="form-select" name="" >
+                <input type="text" class="form-select" id='title1' name="prop_title" value=''>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Description</label>
                 <div class="col-sm-8">
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" name='prop_desc' id='desc1'></textarea>
                 </div>
             </div>
             
@@ -271,11 +369,11 @@
                 <label for="inputsizes" class="col-sm-4 col-form-label">Description</label>
                 <div class="col-sm-8">
               
-                <input class="form-check-input" type="checkbox" name="status"  checked>
+                <input class="form-check-input" id='status1' type="radio" value='Yes' name="status"  checked>
                 <label class="form-check-label" >
                   Active
                 </label>
-                <input class="form-check-input" type="checkbox" name="status"  >
+                <input class="form-check-input" id='status2' type="radio" value='No' name="status"  >
                 <label class="form-check-label" >
                   Canceled
                 </label>
@@ -283,12 +381,13 @@
               </div>           
             </div>
 
-        </form>      
+             
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Yes</button>
+        <button type="submit" id="propt_sub" val-id=''class="btn btn-primary">Submit</button>
       </div>
     </div>
+    </form>
   </div>
 </div>
 <!-- ========== Modal Edit========= -->
