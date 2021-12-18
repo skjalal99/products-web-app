@@ -79,20 +79,16 @@
 
               $res = $conn->query($sql);
 
-              if($res == TRUE)
-              {
+              if ($res == true) {
                   $count = $res->num_rows;
 
-                  if($count >0)
-                  {
-                    while($row = $res->fetch_assoc()) 
-                    {
-                      $id1 = $row['id'];
-                      $title = $row['title'];
-                      $description = $row['description'] ;
-                      $status1 = $row['status1'] ;
-                      $image = $row['image'] ;
-            ?>
+                  if ($count >0) {
+                      while ($row = $res->fetch_assoc()) {
+                          $id1 = $row['id'];
+                          $title = $row['title'];
+                          $description = $row['description'] ;
+                          $status1 = $row['status1'] ;
+                          $image = $row['image'] ; ?>
 
 
               <tr>
@@ -103,30 +99,28 @@
                         </span>
                 </td>
                 
-                <td><img src="../../assets/images/properties/<?php echo $image;?>" width="60"></td>
-                <td><?php echo $title;?></td>
-                <td><?php echo $description;?></td>
-                <td><?php echo $status1;?></td>
+                <td><img src="../../assets/images/properties/<?php echo $image; ?>" width="60"></td>
+                <td><?php echo $title; ?></td>
+                <td><?php echo $description; ?></td>
+                <td><?php echo $status1; ?></td>
            
                 
                   <td >
-                        <a href="" class="edit-tbl edit_prop" val='<?php echo $id1;?>'data-bs-toggle="modal" data-bs-target="#edit-prop"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#" class="delete-tbl del_prop" data-bs-toggle="modal"  data-bs-target="#delete-prop"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+                        <a href="" class="edit-tbl edit_prop" val='<?php echo $id1; ?>'data-bs-toggle="modal" data-bs-target="#edit-prop"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
+                        <a href="#" class="delete-tbl del_prop" val='<?php echo $id1; ?>'data-title='<?php echo $title; ?>' data-bs-toggle="modal"  data-bs-target="#delete-prop"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
                   </td>
               </tr>
               <?php
                       }
-                    }
-                    else
-                    {
-                   echo '<tr >
+                  } else {
+                      echo '<tr >
                       <td colspan="5">
                               No Data to display!
                               </span>
                             </td>
                       </tr >';
-                    }
-                }
+                  }
+              }
 
               ?>
            
@@ -198,102 +192,83 @@
 </div>
 <!-- ======= Modal Add New Size ========= -->
   <?php
-  if(isset($_POST['add_prop']))
-  {
-    $Aicon_img = $_FILES['Aicon_img'];
-    $Aicon_title = $_REQUEST['Aicon_title'];
-    $Aicon_desc = $_REQUEST['Aicon_desc'];
-    $Astatus = $_REQUEST['Astatus'];
+  if (isset($_POST['add_prop'])) {
+      $Aicon_img = $_FILES['Aicon_img'];
+      $Aicon_title = $_REQUEST['Aicon_title'];
+      $Aicon_desc = $_REQUEST['Aicon_desc'];
+      $Astatus = $_REQUEST['Astatus'];
 
-    if($Astatus == 'Yes')
-    {
-      $Astatus = 'Active';
-    }
-    else{
-      $Astatus = 'InActive';
-    }
+      if ($Astatus == 'Yes') {
+          $Astatus = 'Active';
+      } else {
+          $Astatus = 'InActive';
+      }
 
-    if(empty($Aicon_title) ||empty($Aicon_desc) ||empty($Astatus))
-    {
-      echo "<div class='alert alert-danger'>Pls fill the required field</div>";
-      die();
+      if (empty($Aicon_title) ||empty($Aicon_desc) ||empty($Astatus)) {
+          echo "<div class='alert alert-danger'>Pls fill the required field</div>";
+          die();
+      }
 
-    }
+      // print_r($Aicon_img);
 
-   // print_r($Aicon_img);
+      if (!empty($Aicon_img['name'])) {
 
-        if(!empty($Aicon_img['name']))
-        {
+                  // File upload configuration
+          $targetDir = "../../assets/images/properties/";
+          $allowTypes = array('jpg','png','jpeg','gif');
 
-                  // File upload configuration 
-                  $targetDir = "../../assets/images/properties/"; 
-                  $allowTypes = array('jpg','png','jpeg','gif'); 
-
-                  //auto renaming and getting extension of image
-                  $ext = explode('.', $Aicon_img['name']);
-                  $ext = end($ext);
+          //auto renaming and getting extension of image
+          $ext = explode('.', $Aicon_img['name']);
+          $ext = end($ext);
                    
-                  //Rename image
-                  $fileName1 = "Tile_Prop_".rand(00000,99999).'.'.$ext; // eg:tile_12321.jpg
+          //Rename image
+                  $fileName1 = "Tile_Prop_".rand(00000, 99999).'.'.$ext; // eg:tile_12321.jpg
                    
                   //Targeted Files Path to move
-                  $targetFilePath = $targetDir . $fileName1; 
+          $targetFilePath = $targetDir . $fileName1;
 
 
-                  //
-                  if($Aicon_img['size']<='1000000')
-                  {
+          //
+          if ($Aicon_img['size']<='10000000') {
 
-                          // Check whether file type is valid 
-                          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                          if (in_array($fileType, $allowTypes))
-                              {
-                                      $source_dir = $_FILES["Aicon_img"]["tmp_name"];
+                          // Check whether file type is valid
+              $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+              if (in_array($fileType, $allowTypes)) {
+                  $source_dir = $_FILES["Aicon_img"]["tmp_name"];
 
-                                      // Upload file to server 
-                                      $move = move_uploaded_file($source_dir, $targetFilePath);
+                  // Upload file to server
+                  $move = move_uploaded_file($source_dir, $targetFilePath);
                                             
-                                      if($move == TRUE)
-                                      {
-                                        echo "<div class='alert alert-primary'>uploaded Successfully</div>";
-                                      }
-
-
-                              }
-                                else
-                              { 
-                                  echo $errorUploadType = $_FILES["Aicon_img"]; 
-                              }
-
-                    
+                  if ($move == true) {
+                      echo "<div class='alert alert-primary'>uploaded Successfully</div>";
                   }
-
-
-
-          
-        }//Empty ends..
-        else
-        {
+              } else {
+                  echo $errorUploadType = $_FILES["Aicon_img"];
+              }
+          }
+      }//Empty ends..
+      else {
           echo "<div class='alert alert-danger'>Something Went Wrong!:Pls Check Empty Image Field</div>";
-        }
+      }
 
-          $sql1 = "INSERT INTO properties SET
+      $sql1 = "INSERT INTO properties SET
           title='$Aicon_title',
           description='$Aicon_desc',
           image='$fileName1',
           status1='$Astatus'";
 
 
-$res1 = $conn->query($sql1) or die(mysqli_error($conn));
+      $res1 = $conn->query($sql1) or die(mysqli_error($conn));
 
-if($res1 == TRUE){ echo "<div class='alert alert-primary'>Successfully Added </div>";}
-echo "<meta http-equiv='refresh' content='1'>";
-
+      if ($res1 == true) {
+          echo "<div class='alert alert-primary'>Successfully Added </div>";
+      }
+      echo "<meta http-equiv='refresh' content='1'>";
   }
 
   ?>
 
-<!-- ========== Modal Delete========= -->
+<!-- ========== Modal Delete starts========= -->
 
 <!-- Modal -->
 <div class="modal fade" id="delete-prop" tabindex="-1" aria-labelledby="delete-prop" aria-hidden="true">
@@ -304,7 +279,7 @@ echo "<meta http-equiv='refresh' content='1'>";
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Are You Sure ? You want to delete selected one.
+      Are You Sure ? You want to delete : <span id='del-title' class='text-danger'></span> Property?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -323,18 +298,133 @@ echo "<meta http-equiv='refresh' content='1'>";
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      2 Are You Sure ? You want to delete selected one.
+        <form method='post'>
+     Are You Sure ? You want to delete selected one.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-dismiss="modal">Yes</button>
+        <button type="submit" value="" class="btn btn-primary" id='del-id'data-bs-toggle="modal" name="del_sub_prop" data-bs-dismiss="modal">Yes</button>
       </div>
     </div>
+</form>
   </div>
 </div>
 
-<!-- ========== Modal Delete========= -->
+<!-- ============Delete Set -->
 
+<?php
+if(isset($_REQUEST['del_sub_prop']))
+{
+
+
+ $sql21 = "DELETE FROM properties WHERE id= '{$_REQUEST['del_sub_prop']}'";
+
+$result12 = $conn->query($sql21);
+echo $Err_add_tiles = "<div class='alert alert-primary col-sm-6'>Successfully Deleted</div>";
+echo "<meta http-equiv='refresh' content='1'>";
+
+
+}
+
+
+
+?>
+
+
+
+<!-- ========== Modal Delete ends========= -->
+
+
+<?php
+if (isset($_REQUEST['propt_sub'])) {
+      $curr_prop_image = $_REQUEST['curr_prop_image'];
+      $curr_prop_id = $_REQUEST['curr_prop_id'];
+      $prop_title  = $_REQUEST['prop_title'];
+      $prop_desc = $_REQUEST['prop_desc'];
+
+      if ($_REQUEST['status'] == 'Yes') {
+          $status1 ="Active";
+      } else {
+          $status1 ="InActive";
+      }
+
+
+      if (isset($_FILES['new_prop_image'])) {
+          $new_prop_image = $_FILES['new_prop_image'];
+          //Get the image name
+          $Uimage_name = $new_prop_image['name'];
+          $Uimage_tmp = $new_prop_image['tmp_name'];
+          $Uimage_size = $new_prop_image['size'];
+          $uploadOk1 = true;
+
+
+          // printr($new_prop_image);
+          if ($Uimage_name !='') {
+              if ($Uimage_size > 1024000) {
+                  echo $Err_add_tiles = "<div class='alert alert-primary col-sm-6'>Size Should be less than 1MB</div>";
+
+                  $uploadOk1 = false;
+                  die();
+              }
+
+              //auto renaming and getting extension of image
+              $ext = explode('.', $Uimage_name);
+              $ext = end($ext);
+
+              //Rename image
+              $Uimage_name = "Tile_Prop_U".rand(00000, 99999).'.'.$ext; // eg:tile_12321.jpg
+
+              // Get from source path
+              $source_path1 = $Uimage_tmp;
+
+              // set the destination path
+              $destination_path1 = "../../assets/images/properties/".$Uimage_name;
+
+              if ($uploadOk1!== false) {
+                  // move the uploaded file to destination
+                  $upload1 = move_uploaded_file($source_path1, $destination_path1);
+               
+                  //if upload file failed
+                  if ($upload1 == false) {
+                      echo $Err_add_tiles = "<div class='alert alert-warning col-sm-6'>Something Went Wrong;</div>";
+                    
+
+                      die();
+                  }
+              }
+              //remove the current image
+
+              $current_img_path1 = "../../assets/images/properties/".$curr_prop_image;
+
+              $current_img_remove1 =  unlink($current_img_path1);
+          }//$Uimage_name !=''ends;
+
+          else {
+              // set current image
+              $Uimage_name = $curr_prop_image;
+          }
+      } else {
+          echo $Err_add_tiles = "<div class='alert alert-primary col-sm-6'>Pls select the image</div>";
+      }
+      $Uimage_name;
+
+
+      $sql10 = "UPDATE properties SET title='$prop_title',
+      description='$prop_desc',image='$Uimage_name',status1='$status1'
+      WHERE id='$curr_prop_id'";
+
+
+      $res10 = $conn->query($sql10);
+
+      if ($res10 == true) {
+          echo $Err_add_tiles = "<div class='alert alert-primary col-sm-6'>Successfully Added</div>";
+          echo "<meta http-equiv='refresh' content='1'>";
+      } else {
+          echo $Err_add_tiles = "<div class='alert alert-primary col-sm-6'>Error : Pls Update again..</div>";
+      }
+  }
+
+?>
 <!-- ========== Modal Edit========= -->
 <div class="modal fade" id="edit-prop" tabindex="-1" aria-labelledby="edit-prop" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -344,12 +434,14 @@ echo "<meta http-equiv='refresh' content='1'>";
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="" id='form2' enctype= "multipart/form-data">
+      <form action="" method="post" enctype= "multipart/form-data">
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Icon</label>
                 <div class="col-sm-8">
-                <img src="" class="img-thumbnail" id='img1' width="80" height="80" alt="icon">
-                <input type="file" class="form-select" name="prop_image"  >
+                <img src="" class="img-thumbnail" id='img1'  width="80" height="80" alt="icon">
+                <input type="hidden" value='' id='img-edit2' name="curr_prop_image" >
+                <input type="hidden" value='' id='img-val3' name="curr_prop_id" >
+                <input type="file" class="form-select" name="new_prop_image"  >
                 </div>
             </div>
             <div class="mb-3 row">
@@ -384,7 +476,7 @@ echo "<meta http-equiv='refresh' content='1'>";
              
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="submit" id="propt_sub" val-id=''class="btn btn-primary">Submit</button>
+        <button type="submit" id="propt_sub" name="propt_sub" data-bs-dismiss="modal" val-id=''class="btn btn-primary">Submit</button>
       </div>
     </div>
     </form>
