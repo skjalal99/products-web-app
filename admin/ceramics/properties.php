@@ -1,9 +1,12 @@
+<?php  $propertiesp = 'active';?>
 <?php include('../includes/header-admin.php');?>
 <?php include('../includes/aside.php');?>
 <?php include_once('../config/dbconn.php'); ?>
 <?php include('../includes/login-check-admin.php'); ?>
 <?php include_once("../config/functions.php");?>
 <!-- ======== main-wrapper start =========== -->
+
+
     <main class="main-wrapper">
       
     <?php include('../includes/navbar.php');?>
