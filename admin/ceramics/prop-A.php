@@ -31,7 +31,7 @@ if(isset($_REQUEST['id']))
                             
                             echo  "<div class='d-flex mt-4'>
                                         <div class='icon-img'>
-                                        <img class='rounded-circle' src='../../assets/images/$prop_img' alt='' srcset=''>
+                                        <img class='rounded-circle' src='../../assets/images/properties/$prop_img' alt='' srcset=''>
                                         </div>
                                         <div>
                                         <h6>$prop_title</h6>
