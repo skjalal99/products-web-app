@@ -79,7 +79,7 @@
 
                 $sql = 'SELECT sizes.id,sizes.created_on as date,sizes.status,categories.id as cat_id, sizes.sizes, categories.type FROM ((sizes
                 JOIN sizes_has_categories ON sizes.id = sizes_has_categories.sizes_id)
-                JOIN categories ON categories.id = sizes_has_categories.categories_id)';
+                JOIN categories ON categories.id = sizes_has_categories.categories_id) order by sizes.sizes ASC';
 
                 $res = $conn->query($sql);
 
@@ -111,7 +111,7 @@
      
                 <td><span id="sizes<?php echo $id?>"><?php echo $sizes;?></span></td>
                 <td><span id="cat-sizes<?php echo $id?>"><?php echo $categories;?></span></td>
-                <td><span id="sizes-status<?php echo $id?>"> <?php if($status1=='Yes'){echo "<div><span class='active-status'></span>Active</div>";}else{echo "<div><span class='inactive-status'></span>InActive</div>";};?></td>
+                <td><span id="sizes-status<?php echo $id?>"><?php if($status1=='Yes'){echo "<div><span class='active-status'></span>Active</div>";}else{echo "<div><span class='inactive-status'></span>InActive</div>";};?></td>
                 <td><?php echo $date_sizes;?></td>  
                 <td >
                         <button  class="edit-tbl edit-tbl-size" data-catid="<?php echo $cat_id?>"value="<?php echo $id;?>"data-bs-toggle="modal" data-bs-target="#edit2"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></button>
@@ -144,10 +144,6 @@
             </table>
       </div>
 
-
-
-
-
 </div>
 <!-- ==== Container-fluid Ends ==== -->
 
@@ -164,7 +160,7 @@
              <div class="mb-3 row">
               <label for="inputsizes" class="col-sm-2 col-form-label">Sizes</label>
               <div class="col-sm-10">
-                <input type="text" name="add-sizes" class="form-control" id="inputsizes" value="New size">
+                <input type="text" name="add-sizes" class="form-control" id="inputsizes" value="" placeholder="New Size">
               </div>
             </div>
             <div class="mb-3 row">
