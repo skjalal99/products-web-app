@@ -1,3 +1,4 @@
+<?php  $addtilesp = 'active';?>
 <?php include('../includes/header-admin.php');?>
 <?php include('../includes/aside.php');?>
 <?php include_once('../config/dbconn.php'); ?>
@@ -50,7 +51,6 @@
 
             }
 
-
         ?>
 
 
@@ -66,17 +66,18 @@
 
 
       <div class = "table-responsive  ">
-            <table class="table table-striped table-bordered text-center table-hover ">
+            <table class="table table-striped table-bordered text-center table-hover nowrap"style="width:100%" id='tbl_tiles'>
             <thead class="thead-bg">
               <tr >
-                  <th scope="col" >
+                  <!-- <th scope="col" >
                       <span class="custom-checkbox">
                         <input type="checkbox" id="selectAllchecks">
                         <label for="selectAllchecks"></label>
                       </span>
-                  </th>
-                  <th>Size </th>
-                  <th>Model</th>
+                  </th> -->
+                  <th class="left-2">#</th>
+                  <th class="left-2">Size </th>
+                  <th class="left-2">Model</th>
                   <th>Picture</th>
                   <th style="width:6%">Thickness</th>
                   <th>Cm</th>
@@ -134,14 +135,15 @@
                   ?>
 
               <tr>
-                <td scope="row" >
+                <!-- <td scope="row" >
                         <span class="custom-checkbox">
                           <input type="checkbox" id="checkbox1" name="options[]" value="1">
                           <label for="checkbox1"></label>
                         </span>
-                </td>
-                <td><?php echo $sizes;?></td>
-                <td><?php echo $model_no;?></td>
+                </td> -->
+                <td class="left-2"><?php echo $sno++;?></td>
+                <td class="left-2"><?php echo $sizes;?></td>
+                <td class="left-2"><?php echo $model_no;?></td>
                 <td>
                 <?php if(!$tile_img==''){
                     echo '<img src="../../assets/images/tiles/'.$tile_img.'"alt="img" width="80"/>';
@@ -152,7 +154,7 @@
                   } 
                 ?>  
                 </td>
-                <td><?php echo $thickness;?></td>
+                <td ><?php echo $thickness;?></td>
                 <td><?php echo $cm;?></td>
                 <td><?php echo $categories;?></td>
                 <td><?php echo $effect;?></td>  
@@ -168,7 +170,7 @@
                 
                   <td >
                         <a href="#" data-tile-id ='<?php echo $tiles_id;?>' data-size-id ='<?php echo $size_id;?>' data-cat-id ='<?php echo $cat_id;?>' class="edit-tbl edit-tiles" ><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
-                        <a href="#" data-id ='<?php echo $tiles_id;?>'class="delete-tbl del-tiles" data-bs-toggle="modal"  data-bs-target="#delete-tiles"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+                        <a href="#" data-id ='<?php echo $tiles_id;?>' value='<?php echo $model_no;?>'class="delete-tbl del-tiles1" data-bs-toggle="modal"  data-bs-target="#delete-tiles"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
                   </td>
               </tr>
               
@@ -192,12 +194,6 @@
             </tbody>
             </table>
       </div>
-
-
-
-
-
-
 
 
 </div>
@@ -273,7 +269,7 @@
             <div class="mb-3 row">
                 <label for="modelno" class="col-sm-4 col-form-label">Model no:</label>
                 <div class="col-sm-8">
-                  <input type="text"  class="form-control"name="Amodelno" id="modelno" value="Model No." >
+                  <input type="text"  class="form-control"name="Amodelno" id="modelno"placeholder="Model No." value="" >
                 </div>
             </div>
             <div class="mb-3 row">
@@ -285,13 +281,13 @@
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Thickness(mm)</label>
                 <div class="col-sm-8">
-                  <input type="text"  class="form-control"name="Amm" id="inputsizes" value="MM">
+                  <input type="text"  class="form-control"name="Amm" id="inputsizes" placeholder="MM"value="">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Thickness(Cm)</label>
                 <div class="col-sm-8">
-                  <input type="text"  class="form-control"name="Acm" id="inputsizes" value="Cm">
+                  <input type="text"  class="form-control"name="Acm" id="inputsizes" placeholder="CM" value="">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -348,7 +344,7 @@
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Color</label>
                 <div class="col-sm-8">
-                  <input type="text"  class="form-control" name="Acolor" id="inputsizes" value="Color">
+                  <input type="text"  class="form-control" name="Acolor" id="inputsizes" placeholder="Color" value="">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -469,7 +465,7 @@
          $Amaterial = ivalidate($_REQUEST['Amaterial']);
          $Aqty = ivalidate($_REQUEST['Aqty']);
          $Acheckbox = ivalidate($_REQUEST['Acheckbox']);
-         printr($Acheckbox);
+
          $uploadOk = TRUE;
          //$date = date("Y-m-d h:i:sa");
           //active status
@@ -568,7 +564,7 @@
                           $sql_in .="('$last_id_in_tiles',$insert),";
                         
                         }
-                    echo  $sql_in=rtrim($sql_in,",");
+                      $sql_in=rtrim($sql_in,",");
                       $conn->query($sql_in);
 
 
@@ -601,7 +597,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Are You Sure ? You want to delete selected one.
+      Are You Sure ? You want to delete : <span id='del-title1' class='text-danger'></span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -619,18 +615,38 @@
         <h5 class="modal-title" id="delete-tiles2">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form method='post'>
       <div class="modal-body">
       2 Are You Sure ? You want to delete selected one.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-dismiss="modal">Yes</button>
+        <button type="submit" name='del_sub_tiles'id="del_tiles_up" class="btn btn-primary" data-bs-toggle="modal"  data-bs-dismiss="modal">Yes</button>
       </div>
     </div>
+</form>
   </div>
 </div>
+<!-- ============Delete Set============== -->
 
-<!-- ========== Modal Delete========= -->
+<?php
+if (isset($_REQUEST['del_sub_tiles'])) {
+    $sql21 = "DELETE FROM tiles WHERE id= '{$_REQUEST['del_sub_tiles']}'";
+
+    $result12 = $conn->query($sql21);
+    echo $Err_add_tiles = "<div class='alert alert-primary col-sm-6'>Successfully Deleted</div>";
+    echo "<meta http-equiv='refresh' content='1'>";
+}
+
+
+
+?>
+
+
+
+<!-- ========== Modal Delete ends========= -->
+
+<!-- ========== Modal Delete Ends========= -->
 
 <?php
 if(isset($_REQUEST['edit_sub']))
@@ -663,7 +679,7 @@ if(isset($_REQUEST['edit_sub']))
           
             die();
           }
-         printr($Ucheckbox);
+        // printr($Ucheckbox);
          $uploadOk1 = TRUE;
          //$date = date("Y-m-d h:i:sa");
           //active status
@@ -704,7 +720,7 @@ if(isset($_REQUEST['edit_sub']))
                 //Rename image
                     $Uimage_name = "Tile_U".rand(00000, 99999).'.'.$ext; // eg:tile_12321.jpg
 
-                    // Get from source path
+                // Get from source path
                 $source_path1 = $Uimage_tmp;
 
                 // set the destination path
@@ -731,7 +747,8 @@ if(isset($_REQUEST['edit_sub']))
               $current_img_remove1 =  unlink($current_img_path1);    
 
 
-              }//upload image ends
+            }//upload image ends
+
             else
             {
               // set current image
@@ -756,7 +773,7 @@ if(isset($_REQUEST['edit_sub']))
 
           //sql query starts
 
-        echo  $sql_tiles1 ="UPDATE `tiles`
+          $sql_tiles1 ="UPDATE `tiles`
           SET `tile_model_no`='$Umodelno',
               `tile_img`='$Uimage_name',
               `thickness`='$Umm',
@@ -782,7 +799,7 @@ if(isset($_REQUEST['edit_sub']))
                     // SET `tiles_id`='$Utileid',
                     //     `properties_id`='$Utileid'
                     //    " ;
-           echo  $sql_del_all_prop = "DELETE FROM tiles_has_properties
+             $sql_del_all_prop = "DELETE FROM tiles_has_properties
               WHERE tiles_id = '$Utileid'";
                
            $conn->query($sql_del_all_prop);  
@@ -796,7 +813,7 @@ if(isset($_REQUEST['edit_sub']))
                 $insertU = $checkedU;
                 $sql_in1 .="('$Utileid',$insertU),";
             }
-            echo  $sql_in1=rtrim($sql_in1, ",");
+              $sql_in1=rtrim($sql_in1, ",");
          $conn->query($sql_in1);
            
         echo "<meta http-equiv='refresh' content='1'>";
@@ -862,7 +879,7 @@ if(isset($_REQUEST['edit_sub']))
             <div class="mb-3 row">
                 <label for="modelno" class="col-sm-4 col-form-label">Model no:</label>
                 <div class="col-sm-8">
-                  <input type="text"  class="form-control" id="modelno-edit" name = "Umodelno" value="Model No." required>
+                  <input type="text"  class="form-control" id="modelno-edit" name = "Umodelno" placeholder="Model No." value="" required>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -986,7 +1003,7 @@ if(isset($_REQUEST['edit_sub']))
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Qty/Box</label>
             <div class="col-sm-8">
-                  <input type="number"  class="form-control" id="qty-edit" name="Uqty" value="0" required>
+                  <input type="number"  class="form-control" id="qty-edit" name="Uqty"placeholder="qty" value="" required>
             </div>
             </div>
             <div class="mb-3 row">
