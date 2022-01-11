@@ -221,13 +221,14 @@
 if(isset($_REQUEST['add_sizes_submit']))
 {
  $add_sizes = $_REQUEST['add-sizes'];
+ $add_ref = rand(10,20).rand(21,30).rand(31,40).rand(41,50).rand(51,99);
  $add_cat = $_REQUEST['add_cat1'];
  $status1 = $_REQUEST['status1'];
 //  $date = date("Y-m-d h:i:sa");
  
 
 
- $sql_size_add = "INSERT INTO sizes Set sizes = '$add_sizes', status ='$status1', created_on=now()";
+ $sql_size_add = "INSERT INTO sizes Set sizes = '$add_sizes', status ='$status1', created_on=now(), Ref_size='$add_ref'";
 
  
  $res_add1 = $conn->query($sql_size_add);
