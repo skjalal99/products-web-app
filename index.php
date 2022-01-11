@@ -49,7 +49,7 @@ body{
 
 
                                 <div class="col-md-4 text-center" id="neon">
-                                <a href="ceramics/login.php" class="first"><span></span><span></span><span></span><span></span>
+                                <a href="ceramics/index.php" class="first"><span></span><span></span><span></span><span></span>
 
                                 <img src="assets/images/ceramic.png" height="200" alt="">
                                 

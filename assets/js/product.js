@@ -70,6 +70,22 @@ $(document).ready(function(){
             }
 
             // Filter table rows based on searched term Size
+            $("#search-size").on("click", function() {
+                var term = $(this).val().toLowerCase();//alert(term);
+                $("table tbody tr").each(function(){
+                    $row = $(this);
+                    var name = $row.find("td:nth-child(2)").text().toLowerCase();
+                    console.log(name);
+                    //alert(name);
+                    if(name.search(term) < 0){                
+                        $row.hide();
+                    } else{
+                        $row.show();
+                    }
+                });
+            });
+            
+            // Filter table rows based on searched term Size
             $("#search-size").on("change", function() {
                 var term = $(this).val().toLowerCase();//alert(term);
                 $("table tbody tr").each(function(){
@@ -117,12 +133,57 @@ $(document).ready(function(){
             });
 
           
+// ===========dataTables initializations============
+
+    // $('#specification_tbl').DataTable(); // tiles table
+    var table1 = $('#specification_tbl').dataTable( {
+        // scrollY:        "300px",
+        // scrollX:        true,
+        // scrollCollapse: true,
+        // ordering:       true,
+        // paging:         true,
+        fixedColumns: {
+          left: 3
+      }
+        // "columnDefs": [
+        //   { "width": "50%", "targets": 1 }
+        // ]
+    } );
+
+
+
+    
+// ===========dataTables ends============
 
 
 
 
+$(".modalc1").on("click",function(e){
+    e.preventDefault();
 
+    var did = $(this).attr('data-id');
+    var dmodal = $(this).attr('data-model');
+    console.log(did,dmodal);
 
+    $('#WallModal').modal('toggle');
+
+        $.ajax({
+            url: "modal_tiles-A.php",
+            type: 'post',
+            data: {
+                did: did,
+                dmodal: dmodal
+
+            },
+            dataType: 'json',
+            success: function (data, status) {
+
+            }
+        });
+        //ajax ends
+     
+ });
+ 
        
 
 });

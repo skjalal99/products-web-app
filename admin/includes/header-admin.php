@@ -31,29 +31,13 @@ session_start();
         <!-- admin js -->
         <link rel="stylesheet" href="<?php echo SITE_URL1;?>assets/css/admin.css">
         <script src="<?php echo SITE_URL1;?>assets/js/admin.js"></script>
-    
+        <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL1;?>assets/css/dataTables.min.css">
+ 
+        <script type="text/javascript" charset="utf8" src="<?php echo SITE_URL1;?>assets/js/dataTables.min.js"></script>
         
     </head>
     
 <body>
 <?php include("login-check-admin.php");?>
 
-<?php
 
-          if(isset($_GET['page'])=="cat")
-          {
-            $category = "active";
-          }
-          elseif(isset($_GET['page'])=="size")
-          {
-            $size = "active";
-          }
-          elseif(isset($_GET['page'])=="atiles")
-          {
-            $atiles = "active";
-          }
-          elseif(isset($_GET['page'])=="modals")
-          {
-            $modals = "active";
-          }
-     ?>

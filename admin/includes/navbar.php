@@ -21,7 +21,9 @@
             <div class="col-lg-7 col-md-7 col-6">
               <div class="header-right">
                <a href="<?php echo SITE_URL1;?>ceramics/index.php" target="_blank" class="btn-sm btn-success mx-2">Visit Ceramics</a>
-               <a href="<?php echo SITE_URL1;?>admin/logout.php" class="btn-sm btn-warning">Logout</a>
+               <a href="<?php echo SITE_URL1;?>admin/logout.php" class="btn-sm btn-warning mx-2">Logout</a>
+               <a href="#" class="btn-sm btn-primary"><?php if(isset($_SESSION['User-Login'])){echo $_SESSION['User-Login'];}?></a>
+               
               </div>
             </div>
           </div>

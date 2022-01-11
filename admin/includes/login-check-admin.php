@@ -9,9 +9,9 @@ if(!isset($_SESSION['User-Login']))
         echo "Not logged In";
 
 }
-else{
-    echo "==============>".$_SESSION['User-Login'];
-}
+// else{
+//     echo "==============>".$_SESSION['User-Login'];
+// }
 ?>
 
 

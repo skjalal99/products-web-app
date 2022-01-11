@@ -5,8 +5,8 @@
 <aside class="sidebar-nav-wrapper">
 
 <div class="navbar-logo">
-  <a href="index.php">
-    <img src="../assets/images/ceramic.png" height='50'alt="logo" />
+  <a href="<?php echo SITE_URL1;?>admin/index.php" >
+    <img src="<?php echo SITE_URL1;?>assets/images/ceramic.png" height='50'alt="logo" />
   </a>
 </div>
 
@@ -42,26 +42,28 @@
           <!-- show -->
           
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/ceramics/categories.php?page=cat" class="">Categories</a>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/categories.php?page=cat" class="<?php echo ($catp=='active') ? "active" : "Inactive";?>">Categories</a>
           </li>
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/ceramics/sizes.php?page=size" class="">Sizes</a>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/sizes.php?page=size" class="<?php echo ($sizep=='active') ? "active" : "Inactive";?>">Sizes</a>
           </li>
           
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/ceramics/tiles-upload.php?page=atiles" class="">Add Tiles</a>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/tiles-upload.php?page=atiles" class="<?php echo ($addtilesp=='active') ? "active" : "Inactive";?>">Add Tiles</a>
           </li>
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/ceramics/product-modal.php?page=modals" class="">Modals</a>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/product-modal.php?page=modals" class="<?php echo ($modalsp=='active') ? "active" : "Inactive";?>">Modals</a>
           </li>
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/ceramics/properties.php" class="">Properties</a>
+            <a href="<?php echo SITE_URL1;?>admin/ceramics/properties.php" class="<?php echo ($propertiesp=='active') ? "active" : "Inactive";?>">Properties</a>
           </li>
         </ul>
       </li>
 <!-- ======= Ceramic ends========= -->
-<!-- ======= PLASTIC ========= -->
-    <ul>
+<!-- ======= PLASTIC for future use========= -->
+
+
+    <!-- <ul>
       <li class="nav-item nav-item-has-children">
         <a href="#1" data-bs-toggle="collapse" data-bs-target="#d2">
           <span class="icon">
@@ -74,13 +76,18 @@
             <a href="<?php echo SITE_URL1;?>admin/index.php" class="active">page-1</a>
           </li>
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/index.php" class=""> page-2 </a>
+            <a href="<?php echo SITE_URL1;?>admin/index.php" class="<?php echo $active;?>"> page-2 </a>
           </li>
         </ul>
-      </li>
+      </li> -->
+
+
+
 <!-- ======= PLASTIC ends========= -->  
-<!-- ======= Electric Water Heater ========= -->
-<ul>
+<!-- ======= Electric Water Heater for future use========= -->
+
+
+<!-- <ul>
       <li class="nav-item nav-item-has-children">
         <a href="#1" data-bs-toggle="collapse" data-bs-target="#d3">
           <span class="icon">
@@ -90,13 +97,16 @@
         </a>
         <ul id="d3" class="collapse  dropdown-nav">
           <li>
-            <a href="<?php echo SITE_URL1;?>admin/index.php" class="active"> page-1 </a>
+            <a href="<?php echo SITE_URL1;?>admin/index.php" class="active"> Page-1 </a>
           </li>
           <li>
             <a href="<?php echo SITE_URL1;?>admin/index.php" class=""> Page-2 </a>
           </li>
         </ul>
       </li>
+ -->
+
+
 <!-- ======= Electric Water Heater ends ========= -->     
     
  </nav>

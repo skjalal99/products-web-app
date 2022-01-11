@@ -6,79 +6,12 @@
 
 <div class="container-fluid">
 <h1 class="main-title">All Tiles specifcation</h1>
+<!-- ==========Advanced Filter============= -->
+<!-- <a href="advance-filter.php" class="btn-sm btn-outline-primary ">Advanced Filters</a> -->
 
         <div class="table-wrapper">
-             <div class="row">
-      
-                    <div class="col-sm-2">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text" ><span class="input-group-addon"><i class="fas fa-filter"></i></span></div>
-                            </div>
-                            <select class="form-select"  name="" id="search-size" >
-                                <option selected>Select Size</option>
-                                <option value="10x10">10x10</option>
-                                <option value="10x20">10x20</option>
-                                <option value="10x30">10x30</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="input-group">
-                        <div class="input-group-prepend">
-                                <div class="input-group-text" ><span class="input-group-addon"><i class="fas fa-filter"></i></span></div>
-                            </div>
-                             <input type="text" class="form-control" id="search-model" placeholder="Model" aria-label="Model" aria-describedby="Model">
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="input-group">
-                            <select class="form-select"  name="" id="search-type" >
-                                <option selected>Select Category</option>
-                                <option value="wall">Wall</option>
-                                <option value="floor">Floor</option>
-                                <option value="roof">Roof</option>
-                            </select>
-                            
-                             <div class="input-group-prepend">
-                                <div class="input-group-text" ><span class="input-group-addon"><i class="fa fa-search"></i></span></div>
-                            </div>
-                        </div>
-                    </div>
-                   
-
-
-                    <div class="col-sm-4 d-flex flex-row justify-content-end ">
-                    
-                        <div class="btn-group btn-search-radio" data-toggle="buttons">
-                            <label class="btn btn-info active">
-                                <input type="radio" name="status" value="all" checked="checked"> All
-                            </label>
-                            <label class="btn btn-success">
-                                <input type="radio" name="status" value="active"> Active
-                            </label>
-                            <label class="btn btn-warning">
-                                <input type="radio" name="status" value="inactive"> Inactive
-                            </label>
-                            <label class="btn btn-danger">
-                                <input type="radio" name="status" value="expired"> Expired
-                            </label>							
-                        </div>
-                        
-
-                    </div>
-                    <div class="col-sm-2 d-flex flex-row justify-content-end ">
-                    
-                    <a href="advance-filter.php" class="btn-sm btn-outline-primary ">Advanced Filters</a>
-                  
-                    </div>
- 
-                    
-                </div>
-                <!-- ====Row Ends==== -->
-
-            <div class="table-responsive table-spec">
-            <table class="table table-dark table-striped table-hover ">
+          <div class="table-responsive table-spec">
+            <table class="table table-dark table-striped table-hover" id="specification_tbl">
                 <thead class="thead-spec">
                     <tr>
                         <th>#</th>
@@ -99,140 +32,108 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-status="inactive">
-                        <td>1</td>
-                        <td>10x10</td>
-                        <td>DG-36701</td>
-                        <td><img src="../assets/images/2-a.jpg" width="50" alt="img"></td>
-                        <td>7.5</td>
-                        <td><span class="label label-success">0.75</span></td>
-                        <td>Wall</td>
-                        <td>Glossy</td>
-                        <td>Gray</td>
-                        <td>Indoor</td>
-                        <td>erwerwe</td>
-                        <td>Material</td>
-                        <td>000</td>
-                        <td>Canceled</td>
-                        <td>
-                                 <a href="#" data-toggle="tooltip" class="btn-sm table-view-button boxshadow " data-bs-toggle="modal" data-bs-target="#WallModal"><i class="fa fa-eye text-alert" aria-hidden="true"></i> View</a> 
-                        </td>
+                    
+                <?php
+                    
+                    $sno = 1;
+
+                    $sql = 'SELECT tiles.id as tilesid, categories.id as catid,sizes.id as sizeid,sizes.sizes,categories.type,tiles.tile_model_no,
+                    tiles.tile_img,tiles.thickness,tiles.cm,tiles.effect, tiles.color,
+                    tiles.usage,tiles.surface,tiles.material, tiles.qty_per_box,tiles.status1
+                    FROM ((tiles JOIN sizes ON tiles.sizes_id = sizes.id)
+                    JOIN categories ON categories.id = tiles.categories_id)
+                    ORDER BY sizes.sizes ASC' ;
+
+                    $res = $conn->query($sql);
+
+                    if($res == TRUE)
+                    {
+                        $count = $res->num_rows;
+
+                        if($count >0)
+                        {
+                          while($row = $res->fetch_assoc()) 
+                          {
+                            $tiles_id = $row['tilesid'] ;
+                            $cat_id = $row['catid'] ;
+                            $size_id = $row['sizeid'] ;
+                            $sizes = $row['sizes'] ;
+                            $categories = $row['type'] ;
+                            $model_no = $row['tile_model_no'] ; 
+                            $tile_img = $row['tile_img'] ; 
+                            $thickness = $row['thickness'] ; 
+                            $cm = $row['cm'] ;
+                            $effect = $row['effect'] ;
+                            $color = $row['color'] ;
+                            $usage = $row['usage'] ;
+                            $surface = $row['surface'] ;
+                            $material = $row['material'] ;
+                            $qty_per_box = $row['qty_per_box'] ;
+                            $status = $row['status1'] ;
+                  ?>
+                <tr data-status="<?php echo $status;?>">
+                <td class="left-2"><?php echo $sno++;?></td>
+                <td class="left-2"><?php echo $sizes;?></td>
+                <td class="left-2"><?php echo $model_no;?></td>
+                <td>
+                <?php if(!$tile_img==''){
+                    echo '<img src="../assets/images/tiles/'.$tile_img.'"alt="img" width="80"/>';
+                  }
+                  else
+                  {
+                    echo 'No Image';
+                  } 
+                ?>  
+                </td>
+                <td ><?php echo $thickness;?></td>
+                <td><?php echo $cm;?></td>
+                <td><?php echo $categories;?></td>
+                <td><?php echo $effect;?></td>  
+                <td><?php echo $color;?></td>
+                <td><?php echo $usage;?></td>
+                <td><?php echo $surface;?></td>
+                <td><?php echo $material;?></td>
+                <td><?php echo $qty_per_box;?></td>
+                <td><?php if($status=='Active'){echo "<div><span class='active-status'></span>Active</div>";}else{echo "<div><span class='inactive-status'></span>InActive</div>";}?></td>
+                <td>
+                 <!-- <a href="#" data-id ='<?php echo $tiles_id;?>' data-model="<?php echo $model_no;?>"
+                  data-toggle="tooltip" class="btn-sm table-view-button boxshadow modal_tiles_c1"
+                   data-bs-toggle="modal" data-bs-target="#WallModal<?php echo $model_no;?>">
+                   <i class="fa fa-eye text-alert" aria-hidden="true"></i> View</a>  -->
+                 <a href="#" data-id ='<?php echo $tiles_id;?>' data-model="<?php echo $model_no;?>"
+                  class="btn-sm table-view-button boxshadow modalc1">
+                   <i class="fa fa-eye text-alert" aria-hidden="true"></i> View</a> 
+                  
+                </td>
                         
-                    </tr>
-                    <tr data-status="inactive">
-                    <td>2</td>
-                        <td>10X20</td>
-                        <td>DG-36702</td>
-                        <td><img src="../assets/images/2-a.jpg" width="50" alt="img"></td>
-                        <td>7.5</td>
-                        <td><span class="label label-success">0.75</span></td>
-                        <td>Wall</td>
-                        <td>Glossy</td>
-                        <td>Gray</td>
-                        <td>Indoor</td>
-                        <td>erwerwe</td>
-                        <td>Material</td>
-                        <td>000</td>
-                        <td>Canceled</td>
-                        <td>
-                                 <a href="#" data-toggle="tooltip" class="btn-sm table-view-button boxshadow " data-bs-toggle="modal" data-bs-target="#WallModal"><i class="fa fa-eye text-alert" aria-hidden="true"></i> View</a> 
-                        </td>
-                    </tr>
-                    <tr data-status="active">
-                        <td>3</td>
-                        <td>10X20</td>
-                        <td>DG-36703</td>
-                        <td><img src="../assets/images/2-a.jpg" width="50" alt="img"></td>
-                        <td>7.5</td>
-                        <td><span class="label label-success">0.75</span></td>
-                        <td>Wall</td>
-                        <td>Glossy</td>
-                        <td>Gray</td>
-                        <td>Indoor</td>
-                        <td>erwerwe</td>
-                        <td>Material</td>
-                        <td>000</td>
-                        <td>Canceled</td>
-                        <td>
-                                 <a href="#" data-toggle="tooltip" class="btn-sm table-view-button boxshadow " data-bs-toggle="modal" data-bs-target="#WallModal"><i class="fa fa-eye text-alert" aria-hidden="true"></i> View</a> 
-                        </td>
-                    </tr>
-                    <tr data-status="expired">
-                    <td>4</td>
-                        <td>10X20</td>
-                        <td>DG-36704</td>
-                        <td><img src="../assets/images/2-a.jpg" width="50" alt="img"></td>
-                        <td>7.5</td>
-                        <td><span class="label label-success">0.75</span></td>
-                        <td>Floor</td>
-                        <td>Glossy</td>
-                        <td>Gray</td>
-                        <td>Indoor</td>
-                        <td>erwerwe</td>
-                        <td>Material</td>
-                        <td>000</td>
-                        <td>Canceled</td>
-                        <td>
-                                 <a href="#" data-toggle="tooltip" class="btn-sm table-view-button boxshadow " data-bs-toggle="modal" data-bs-target="#WallModal"><i class="fa fa-eye text-alert" aria-hidden="true"></i> View</a> 
-                        </td>
-                    </tr>
-                    <tr data-status="inactive">
-                    <td>5</td>
-                        <td>10X20</td>
-                        <td>DG-36705</td>
-                        <td><img src="../assets/images/2-a.jpg" width="50" alt="img"></td>
-                        <td>7.5</td>
-                        <td><span class="label label-success">0.75</span></td>
-                        <td>Wall</td>
-                        <td>Glossy</td>
-                        <td>Gray</td>
-                        <td>Indoor</td>
-                        <td>erwerwe</td>
-                        <td>Material</td>
-                        <td>000</td>
-                        <td>Canceled</td>
-                        <td>
-                                 <a href="#" data-toggle="tooltip" class="btn-sm table-view-button boxshadow " data-bs-toggle="modal" data-bs-target="#WallModal"><i class="fa fa-eye text-alert" aria-hidden="true"></i> View</a> 
-                        </td>
-                    </tr>
-                    <tr data-status="inactive">
-                    <td>6</td>
-                        <td>10X30</td>
-                        <td>DG-36706</td>
-                        <td><img src="../assets/images/2-a.jpg" width="50" alt="img"></td>
-                        <td>7.5</td>
-                        <td><span class="label label-success">0.75</span></td>
-                        <td>Wall</td>
-                        <td>Glossy</td>
-                        <td>Gray</td>
-                        <td>Indoor</td>
-                        <td>erwerwe</td>
-                        <td>Material</td>
-                        <td>000</td>
-                        <td>Canceled</td>
-                        <td>
-                                <a href="#" data-toggle="tooltip" class="btn-sm table-view-button boxshadow " data-bs-toggle="modal" data-bs-target="#WallModal"><i class="fa fa-eye text-alert" aria-hidden="true"></i> View</a> 
-                        </td>
-                    </tr>
+                </tr>
+                <?php
+                      }
+                    }
+                    else
+                    {
+                   echo '<tr >
+                      <td colspan="17">
+                              No Data to display!
+                              </span>
+                            </td>
+                      </tr >';
+                    }
+
+                }
+
+              ?>
                 </tbody>
             </table>
         </div> 
         <!-- ========table-wrapper ends========= -->
     </div>  
     <!-- ======Table Responsive ends=========  -->
-    <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    </li>
-    <li class="page-item active"><a class="page-link " href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+    
+    <script> 
+
+
+</script>
 </div> 
 <!-- ======container fluid ends========= -->
 

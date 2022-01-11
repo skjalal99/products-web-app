@@ -1,5 +1,12 @@
-
 <?php include('../includes/header.php');?>
+<?php
+if(!isset($_SESSION['User-Loginc']))
+{
+   header("Location:login.php");
+}
+
+
+?>
 <?php include('includes/ceramic_menu.php');?>
 
 

@@ -1,3 +1,5 @@
+ <?php include_once('login-check-ceramics.php');?>
+ 
  <!-- Style css-->
  <link rel="stylesheet" href="../assets/css/style.css">
 
@@ -5,8 +7,8 @@
           <!-- Navbar one -->
           <nav class="navbar navbar-expand-lg navbar-light bg-dark top-bar">
             <div class="container-fluid">
-              <a class="navbar-brand" href=""></a>
-              <a href="#" class="btn-sm btn-primary login">Logout</a>
+              <a class=" text-white" ><?php echo strtoupper($_SESSION['User-Loginc']);?></a>
+              <a href="logout.php" class="btn-sm btn-primary login">Logout</a>
               
             </div>
           </nav>
@@ -38,7 +40,7 @@
                   </li>
                   
                 
-                  <li class="nav-item dropdown">
+                  <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                      Others
                     </a>
@@ -47,7 +49,8 @@
                       <li><a class="dropdown-item" href="#">2 </a></li>
                       <li><a class="dropdown-item" href="#">3 </a></li>
                     </ul>
-                  </li>
+                  </li> -->
+
                 </ul>
               </div>
             </div>

@@ -7,13 +7,13 @@
 <div class="modal fade" id="WallModal" tabindex="-1" aria-labelledby="WallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable modal-cat">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header modal-courasel-header">
         <h5 class="modal-title" id="WallModalLabel">Dg-36701 - Tile Details</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row">
-      <div class="col-md-8 ">
+      <div class="col-md-7 ">
 
                 <div id="WallModalIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -51,7 +51,7 @@
        </div>
        <!-- =======col-md-8 ends====== -->
       
-      <div class="col-md-4 "> 
+      <div class="col-md-5 "> 
             <h5 class="product_heading">Product Specification</h5>
             <div class="row prod_spec">
               <div class="col-md-5">Model No.</div>

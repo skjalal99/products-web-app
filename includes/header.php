@@ -2,7 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-       
+<?php
+// Output Buffer Starts
+ob_start();
+// Start the session
+session_start();
+
+?>  
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,12 +31,16 @@
         <!-- font-awesome all 5.15.4 css -->
         <link rel="stylesheet" href="<?php echo SITE_URL;?>assets/css/font-awesome.min.5.15.4.all_min.css">
          <!-- animate.min.css -->
-         <!-- <link rel="stylesheet" href="../assets/css/jquery.animate.min.css">     -->
+         <!-- <link rel="stylesheet" href="../assets/css/jquery.animate.min.css">-->
         <!-- Product js -->
          <script src="<?php echo SITE_URL;?>assets/js/product.js"></script>
+         <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL;?>assets/css/dataTables.min.css">
+ 
+        <script type="text/javascript" charset="utf8" src="<?php echo SITE_URL;?>assets/js/dataTables.min.js"></script>
    
     
 
     </head>
     
 <body>
+<?php include_once('../admin/config/dbconn.php');?>

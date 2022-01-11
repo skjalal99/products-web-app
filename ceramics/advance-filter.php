@@ -234,6 +234,7 @@
         <!-- ========table-wrapper ends========= -->
 
 
+        <?php include('model-cat.php');?>  
 
 
         </div>

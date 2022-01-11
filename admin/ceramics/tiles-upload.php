@@ -237,7 +237,10 @@
                   <select class="form-select  mb-3" aria-label=" sizes" name="Asize">
               <?php
 
-              $sql = "SELECT * FROM sizes WHERE STATUS ='Yes' ORDER BY sizes ASC";
+              $sql = "SELECT sizes.id,sizes.sizes, categories.type FROM ((sizes
+              JOIN sizes_has_categories ON sizes.id = sizes_has_categories.sizes_id)
+              JOIN categories ON categories.id = sizes_has_categories.categories_id) where sizes.status = 'Yes'
+              ORDER BY SIZES ASC";
 
               $res = $conn->query($sql);
 
@@ -250,8 +253,9 @@
                     {
                         $id1 = $row['id'];
                         $sizes = $row['sizes'];
+                        $type_s = $row['type'];
 
-                      echo  "<option value='$id1'>$sizes</option>";
+                      echo  "<option value='$id1'>$sizes - $type_s</option>";
             
                     }
                   }
@@ -847,7 +851,10 @@ if(isset($_REQUEST['edit_sub']))
                   <select class="form-select  mb-3" aria-label="sizes" id="sizes-edit"name="Usize">
               <?php
 
-              $sql = "SELECT * FROM sizes ORDER BY sizes ASC";
+              $sql = "SELECT sizes.id,sizes.id,sizes.sizes, categories.type FROM ((sizes
+              JOIN sizes_has_categories ON sizes.id = sizes_has_categories.sizes_id)
+              JOIN categories ON categories.id = sizes_has_categories.categories_id) where sizes.status = 'Yes'
+              ORDER BY SIZES ASC";
 
               $res = $conn->query($sql);
 
@@ -859,9 +866,10 @@ if(isset($_REQUEST['edit_sub']))
                     while ($row = $res->fetch_assoc()) 
                     {
                         $id1 = $row['id'];
+                        $type_e = $row['type'];
                         $sizes = $row['sizes'];
 
-                      echo  "<option value='$id1'data-val='$id1'>$sizes</option>";
+                      echo  "<option value='$id1'data-val='$id1'>$sizes - $type_e</option>";
             
                     }
                   }
