@@ -9,6 +9,6 @@
    <!-- dataTables bootstrap 5 JavaScript -->
    <!-- <script src="<?php echo SITE_URL1;?>assets/js/dataTables.bootstrap5.min.js"></script>-->
    <!-- dataTables fixed columns JavaScript -->
-   <script src="<?php echo SITE_URL1;?>assets/js/dataTables.fixedColumns.min.js"></script>
+   <script src="<?php echo SITE_URL1;?>assets/js/dataTables.fixedColumns.min.js"></script>  -->
  
 </html>
