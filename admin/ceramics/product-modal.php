@@ -161,18 +161,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- ======= Modal Add New Modal ========= -->
 <div class="modal fade" id="add-new-modal" tabindex="-1" aria-labelledby="add-new-modal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -350,7 +338,7 @@ if(isset($_REQUEST['modal_submit']))
               {
 
                 echo $Err_add_tiles = "<div class='alert alert-warning col-sm-6'>Error: Pls select pictures</div>";
-die();
+                die();
               }
 
           }//file isset ends
@@ -420,7 +408,7 @@ die();
       
 
 
-<span id='del_imgs'></span>
+        <span id='del_imgs'></span>
 
 
 
@@ -484,8 +472,14 @@ die();
                 <div class="col-sm-8">
 
                   <span id="checka"></span>
+                
 
                 </div>
+            </div>
+            <div class="mb-3 row">
+            <label for="inputsizes" class="col-sm-4 col-form-label">Upload More Pictures :</label>
+                
+                <div class="col-sm-5"><button type="button" tileid='' class="btn btn-sm btn-primary add_more">Add more</button></div>
             </div>
             
             <div class="mb-3 row">
@@ -499,6 +493,8 @@ die();
                 <input class="form-check-input" type="radio" value="No" id="Emodal-status1" name="Emodal_status" >
                 <label class="form-check-label" >
                   Canceled
+                
+                  </a>
                 </label>
 
               </div>           
