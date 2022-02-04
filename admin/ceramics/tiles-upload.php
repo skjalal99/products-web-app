@@ -341,6 +341,10 @@
                     <option value="Marble" selected>Marble</option>
                     <option value="Wooden">Wooden</option>
                     <option value="Stone">Stone</option>
+                    <option value="Plane">Plane</option>
+                    <option value="Mosaic">Mosaic</option>
+                    <option value="Rustic">Rustic</option>
+                    <option value="Block">Block</option>
                     <option value="Granite">Granite</option>
                   </select>
                 </div>
@@ -958,6 +962,10 @@ if(isset($_REQUEST['edit_sub']))
                     <option value="Marble" selected>Marble</option>
                     <option value="Wooden">Wooden</option>
                     <option value="Stone">Stone</option>
+                    <option value="Plane">Plane</option>
+                    <option value="Mosaic">Mosaic</option>
+                    <option value="Rustic">Rustic</option>
+                    <option value="Block">Block</option>
                     <option value="Granite">Granite</option>
                   </select>
                 </div>
@@ -965,8 +973,8 @@ if(isset($_REQUEST['edit_sub']))
             <div class="mb-3 row">
                 <label for="inputsizes" class="col-sm-4 col-form-label">Color</label>
                 <div class="col-sm-8">
-                  <!-- <input type="text"  class="form-control" name="Ucolor" id="color-edit" value="Color" required> -->
-                  <select class="form-select  mb-3" aria-label=" effect" id="color-edit" name="Ucolor" >
+                  <input type="text"  class="form-control" name="Ucolor" id="color-edit" value="Color" required>
+                  <!-- <select class="form-select  mb-3" aria-label=" effect" id="color-edit" name="Ucolor" >
                     <option value="Biege" selected>Biege</option>
                     <option value="Gray">Gray</option>
                     <option value="Brown">Brown</option>
@@ -974,7 +982,7 @@ if(isset($_REQUEST['edit_sub']))
                     <option value="Pink">Pink</option>
                     <option value="Plain">Plain</option>
                     <option value="Others">Others</option>
-                  </select>
+                  </select> -->
                 </div>
             </div>
             <div class="mb-3 row">
@@ -1086,7 +1094,7 @@ if(isset($_REQUEST['edit_sub']))
 
 
 
- <?php include('../includes/footer-admin.php');?>
+<?php include('../includes/footer-admin.php');?>
  
     </main>
 <!-- ======== main-wrapper end =========== -->
