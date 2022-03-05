@@ -78,13 +78,31 @@
                 </div>
               </div>
               <!-- End Icon Cart -->
+              
             </div>
             <!-- End Col -->
+            
          
           </div>
            <!-- End Row -->
-          
-        
+                  <?php
+                      $sql1 = "SELECT tile_model_no,created_on FROM `tiles` order by created_on DESC LIMIT 5";
+                      $res1 = $conn->query($sql1);
+                      while ($rowcount1 = $res1->fetch_assoc()) {
+                        $tile_model_no = $rowcount1['tile_model_no'];
+                        $created_on = $rowcount1['created_on'];
+                         // $count_Tiles = $rowcount1['count1']; ?>
+                  <div class="col-xl-12 col-lg-12 col-sm-12">
+                      <div class="alert alert-success" role="alert">
+                       <?php echo 'Tile no: '.$tile_model_no;?> | <?php echo 'New Tile added on : '. Date($created_on);?>
+                      </div> 
+                    </div>
+            <?php
+                      }
+            ?>
+            
+         
+
         </div>
         <!-- end container -->
       </section>

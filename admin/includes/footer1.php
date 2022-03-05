@@ -7,18 +7,18 @@
               <div class="copyright text-center text-md-start">
                 <p class="text-sm">
                   Designed and Developed by
-                  abcd
+                  <B>SJ</B>
                   </a>
                 </p>
               </div>
             </div>
             <!-- end col-->
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="terms d-flex justify-content-center justify-content-md-end">
                 <a href="#0" class="text-sm">xyz</a>
                 <a href="#0" class="text-sm ml-15">123</a>
               </div>
-            </div>
+            </div> -->
           </div>
           <!-- end row -->
         </div>
