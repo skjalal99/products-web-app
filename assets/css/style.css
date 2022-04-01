@@ -1032,7 +1032,7 @@ a.three span:nth-child(4){
         .carousel-inner > .carousel-item > img {
         margin: 0; 
         max-width: 100%; 
-        max-height:450px;}
+        max-height:380px;}
         .carousel-indicators li {
             width: 200px;
             height: 100%;
@@ -1042,7 +1042,7 @@ a.three span:nth-child(4){
         position: static;
         }
         .carousel-indicators li.thumbnail {
-        width: 150px!important;
+        width: 100px!important;
         height: 100%;
         opacity: 0.8;
         }
@@ -1080,7 +1080,8 @@ a.three span:nth-child(4){
     }
     .icon-img img{
         margin-left: 10px;
-        width:50px;
+        width: 50px;
+        height: 50px;
     }
     .product_content h6{
         font-family:roboto,'sans-serif';
@@ -1117,7 +1118,7 @@ a.three span:nth-child(4){
         border-top:4px solid greenyellow;
         vertical-align: middle;
         font-size:16px;
-        text-align:left;
+        /* text-align:left; */
         color:greenyellow;
     }
     .table-view-button{
