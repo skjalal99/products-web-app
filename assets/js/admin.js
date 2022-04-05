@@ -251,7 +251,7 @@ $(".del-tiles1").click(function () {
       },
         success:function(data1,status)
         {
-
+console.log(data1);
           $('.prop_modal').html(data1);
 
           // Display Modal
@@ -394,6 +394,7 @@ $('.edit_pro_modal').on('click',(function(e){
   e.preventDefault();
 
   var id = $(this).attr('data-id');
+  $('.add_more').attr('tileid', id);
       $.ajax({
         url: "product-modal-A-edit.php",
         type: 'post',
@@ -444,9 +445,9 @@ $('.edit_pro_modal').on('click',(function(e){
                 }
 
                 
-                var ImgShow = $("<img src='../../assets/images/modals/" + val.imgg + "' class='img-thumbnail mx-2 showimage' width='80'alt='...'>" +
+                var ImgShow = $("<img src='../../assets/images/modals/" + val.imgg + "' class='img-thumbnail mx-2 showimage"+val.tiles_id+"' width='80'alt='...'>" +
                 "<input type='hidden' value='"+ val.tiles_id2 +"' name='tilemodelid'>"+
-                  "Show: <input type='checkbox' value='"+ val.tiles_id +"' id='dfds' class='checktoshow'"+ xcheck +" name='checktoshow[]'></br>").on('change', function () {
+                  "Show: <input type='checkbox' value='"+ val.tiles_id +"' id='dfds"+val.tiles_id+"' class='checktoshow'"+ xcheck +" name='checktoshow[]'> </br>").on('change', function () {
 
                     var max_limit = 4; // Max Limit
 
@@ -459,8 +460,34 @@ $('.edit_pro_modal').on('click',(function(e){
                     }
                   });// appended value changed and add change event
 
-                $('#checka').append(ImgShow);// appended the dynamic elements
 
+        var ImgDel = $("<a href='javascript:void(0)' class='Tdel"+val.tiles_id+"' data-md="+ val.tiles_id +"><i class='fa fa-trash' title='Delete'></i></a>");
+       
+        ImgDel.on('click',(function(){
+          var Did =  $(this).attr('data-md');
+                $.ajax({
+                  url: "del_tiles_modal-A.php",
+                  type: "POST",
+                  data:{ Did:Did},
+                  //dataType: 'json',
+                  success: function (datad, status){
+                    if(datad == 0){
+                      alert('One Item Deleted Successfully');
+                     $('.Tdel'+Did).hide();
+                     $('.showimage'+Did,).hide();
+                     $('#dfds'+Did).fadeOut(1000);
+                      
+                    }
+
+                  }
+                });//ajax ends..
+          
+          })); //ImgDel ends
+
+               $('#checka').append(ImgDel,ImgShow);// appended the dynamic elements / image show and del
+
+
+  
               })//each function ends
 
 
@@ -507,6 +534,8 @@ $("#E_model_submit").on("click", function(e){
           $('#checka').empty(); // empty the check box after append
          var succ_upd =  $('#update_res').append("<div class='alert alert-primary'>Successfully Updated</div>");
          setTimeout(function(){succ_upd.fadeOut(1000).empty(); }, 2000)
+         location.reload();
+
         }
         else{$('#update_res').append("<div class='alert alert-danger'>Error in Updatation</div>")}
       
@@ -756,7 +785,27 @@ $('.del-tbl-user').on('click', function () {
 });
 // ============= Delete Users Ends ============
 
+$('.add_more').on('click', function () {
+  var Am = $(this).attr('tileid');
+  $('#E_mod_no').val(Am).attr('readonly', true);
+  $('#add-new-modal').modal('show');
+  $('#edit-modal').modal('hide');
+  
 
+  console.log(Am);
+      // $.ajax({
+      //   url: "add_more_tiles-A.php",
+      //   type: 'post',
+      //   data: {tiles_id : Am},
+      //   dataType: 'json',
+      //   success: function (dusers, status){
+
+
+      //   }
+
+      // });
+
+  });
 
 
 });//jquery ends
