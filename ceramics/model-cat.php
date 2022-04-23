@@ -15,125 +15,84 @@
         <div class="row">
       <div class="col-md-7 ">
 
-                <div id="WallModalIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../assets/images/2-a.jpg" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../assets/images/2-b.jpg" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../assets/images/3.jpg" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../assets/images/4.jpg" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../assets/images/hometile.jpg" class="d-block w-100">
-                    </div>
+              <div id="WallModalIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id='cInner'>
+                   
                 </div>
-                </div>
-                <ol class="carousel-indicators">
-                <li data-bs-target="#WallModalIndicators" data-bs-slide-to="0" class="active thumbnail"><img
-                        src="../assets/images/2-a.jpg" class="d-block w-100">
-                </li>
-                <li data-bs-target="#WallModalIndicators" data-bs-slide-to="1" class="active thumbnail"><img
-                        src="../assets/images/2-b.jpg" class="d-block w-100"></li>
-                <li data-bs-target="#WallModalIndicators" data-bs-slide-to="2" class="active thumbnail"><img
-                        src="../assets/images/3.jpg" class="d-block w-100"></li>
-                <li data-bs-target="#WallModalIndicators" data-bs-slide-to="3"  class="active thumbnail"><img
-                        src="../assets/images/4.jpg" class="d-block w-100"></li>
-                <li data-bs-target="#WallModalIndicators" data-bs-slide-to="4"  class="active thumbnail"><img
-                        src="../assets/images/hometile.jpg" class="d-block w-100"></li>
+               
+                <ol class="carousel-indicators" id='cIndicator'>
+               
+
                 </ol>
+                </div>
+
+
 
        </div>
        <!-- =======col-md-8 ends====== -->
       
       <div class="col-md-5 "> 
             <h5 class="product_heading">Product Specification</h5>
+            
             <div class="row prod_spec">
               <div class="col-md-5">Model No.</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">DG-36701</div>
+              <div class="col-md-5" id='mno'>DG-36701</div>
             </div>
             <div class="row prod_spec">
               <div class="col-md-5">Material</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">Ceramic Wall</div>
+              <div class="col-md-5" id='mat'>Ceramic Wall</div>
             </div>
             <div class="row prod_spec">
               <div class="col-md-5">Application</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">Wall</div>
+              <div class="col-md-5" id='type'>Wall</div>
             </div>
             <div class="row prod_spec">
               <div class="col-md-5">Effect</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">Marble</div>
+              <div class="col-md-5" id='effect'>Marble</div>
             </div>
             <div class="row prod_spec">
               <div class="col-md-5">Color</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">Light Gray</div>
+              <div class="col-md-5" id='color'>Light Gray</div>
             </div>
             <div class="row prod_spec">
               <div class="col-md-5">Finish</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">Glossy</div>
+              <div class="col-md-5" id='finish'>Glossy</div>
             </div>
             <div class="row prod_spec">
               <div class="col-md-5">Size</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">316 X 600 mm</div>
+              <div class="col-md-5" id='size'>316 X 600 mm</div>
             </div>
             <div class="row prod_spec">
               <div class="col-md-5">Thickness</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">11 mm</div>
+              <div class="col-md-5" id='thick'>11 mm</div>
             </div>
             <div class="row prod_spec">
               <div class="col-md-5">Qty/Box</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">100Sq mtr / ft/Box</div>
+              <div class="col-md-5" id='qb'>100Sq mtr / ft/Box</div>
             </div>
             <div class="row prod_spec">
               <div class="col-md-5">Application Area</div>
               <div class="col-md-2"><b>:</b></div>
-              <div class="col-md-5">Interior/ Exterior/ Multi</div>
+              <div class="col-md-5" id='area'>Interior/ Exterior/ Multi</div>
             </div>
             
             <div class="product_content mt-1">
                 <h5 class="product_heading">Properties</h5>        
-                <div class=" d-flex  ">
-                      <div class="icon-img">
-                        <img class="rounded-circle" src="../assets/images/2-a.jpg" alt="" srcset="">
-                      </div>
-                      <div>
-                        <h6>STAIN RESISTANCE</h6>
-                        <p>Easy to clean and maintain. It has stain-free and resistant to alkalies and acids.</p>
-                      </div>       
-                </div>
-                <div class=" d-flex">
-                      <div class="icon-img">
-                        <img class="rounded-circle" src="../assets/images/2-b.jpg" alt="" srcset="">
-                      </div>
-                      <div>
-                        <h6>Anti Slip</h6>
-                        <p>It is salt glazed and are anti-slip and non-skid.</p>
-                      </div>       
-                </div>
-                <div class=" d-flex ">
-                      <div class="icon-img">
-                        <img class="rounded-circle" src="../assets/images/3.jpg" alt="" srcset="">
-                      </div>
-                      <div>
-                        <h6>High Durability</h6>
-                        <p>It remains functional with out requiring excessive maintanence or repair.</p>
-                      </div>       
-                </div>
-            </div>
+                
+                <div class='mod_prop1'></div>
+
+
+              
+
             <!-- =======Product_content ends========== -->
             
         </div>

@@ -11,15 +11,15 @@
 
         <div class="table-wrapper">
           <div class="table-responsive table-spec">
-            <table class="table table-dark table-striped table-hover" id="specification_tbl">
+            <table class="table table-dark table-striped table-hover text-center" id="specification_tbl">
                 <thead class="thead-spec">
                     <tr>
                         <th>#</th>
                         <th>Size</th>
                         <th>Model</th>
                         <th>Pictures</th>
-                        <th>Thickness</th>
-                        <th>Cm</th>
+                        <th>Thickness </br>[mm] / [cm]</th>
+                        <!-- <th>Cm</th> -->
                         <th>Categories</th>
                         <th>Effect</th>
                         <th>Color</th>
@@ -85,8 +85,8 @@
                   } 
                 ?>  
                 </td>
-                <td ><?php echo $thickness;?></td>
-                <td><?php echo $cm;?></td>
+                <td class="text-center"><?php echo $thickness;?> | <?php echo $cm;?></td>
+             
                 <td><?php echo $categories;?></td>
                 <td><?php echo $effect;?></td>  
                 <td><?php echo $color;?></td>
@@ -126,6 +126,7 @@
                 </tbody>
             </table>
         </div> 
+     
         <!-- ========table-wrapper ends========= -->
     </div>  
     <!-- ======Table Responsive ends=========  -->

@@ -5,55 +5,37 @@
 
 if(isset($_REQUEST['did']))
 {
-   echo  $tiles_id = $_REQUEST['did'];
+     $tiles_id = $_REQUEST['did'];
    // echo "id recieved";
 
                    
-                    // $sql_prop = "SELECT properties.title,properties.description,properties.image,tiles.tile_model_no
-                    //         FROM ((tiles JOIN tiles_has_properties ON tiles.id = tiles_has_properties.tiles_id) 
-                    //         JOIN properties ON properties.id = tiles_has_properties.properties_id)
-                    //         WHERE tiles_has_properties.tiles_id = '$prop_id'";
+ $sql_modal = "SELECT tiles.id as tilesid, categories.id as catid,sizes.id as sizeid,sizes.sizes,
+               categories.type,tiles.tile_model_no, tiles.tile_img,tiles.thickness,tiles.cm,
+               tiles.effect, tiles.color, tiles.usage,tiles.surface,tiles.material, 
+               tiles.qty_per_box,tiles.status1 FROM
+               ((tiles JOIN sizes ON tiles.sizes_id = sizes.id)
+               JOIN categories ON categories.id = tiles.categories_id)
+               WHERE tiles.id = $tiles_id";
 
-                    // $res_prop = $conn->query($sql_prop);
+                    $res_modal = $conn->query($sql_modal);
 
-                    // if($res_prop == TRUE)
-                    // {
-                    //     $count1 = $res_prop->num_rows;
+                    if($res_modal == TRUE)
+                    {
+                        $count1 = $res_modal->num_rows;
 
-                    //     if($count1 >0)
-                    //     {
-                          
-                    //       while($row_prop = $res_prop->fetch_assoc()) 
-                    //       {
-                    //         $prop_title = $row_prop['title'] ;
-                    //         $prop_desc = $row_prop['description'] ;
-                    //         $prop_img = $row_prop['image'] ; 
-                            
-                    //         echo  "<div class='d-flex mt-4'>
-                    //                     <div class='icon-img'>
-                    //                     <img class='rounded-circle' src='../../assets/images/properties/$prop_img' alt='' srcset=''>
-                    //                     </div>
-                    //                     <div>
-                    //                     <h6>$prop_title</h6>
-                    //                     <p>$prop_desc</p>
-                    //                     </div>
-                    //                  </div>";
+                        
 
-                    //       }
-                    //     }
-                    //     else
-                    //       {
-                    //     echo '<tr >
-                    //         <td colspan="5">
-                    //                 No Data to display!
-                    //                 </span>
-                    //               </td>
-                    //         </tr >';
-                    //       }
+                        if($count1 >0)
+                        {
+                           $row_modal = $res_modal->fetch_assoc();
 
-                    // }
+                           $modal_data[] = $row_modal;
+                        
+                        }
+                       
+                    }
 
-   
+                    echo json_encode($modal_data);
 
 
 }

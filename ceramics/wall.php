@@ -33,13 +33,14 @@
     <div class="col-md-12 ml-2 " id='<?php echo $Reff_size; ?>'><h3 class="sub-title text-left"><?php echo $size_s; ?> </h3><div class="sub-title-border"></div></div>
     
     <?php
-                $sql02 = "SELECT tiles.tile_model_no as tile_model,tiles.tile_img as tile_img,
+                $sql02 = "SELECT tiles.id,tiles.tile_model_no as tile_model,tiles.tile_img as tile_img,
                 sizes.sizes as sizes, categories.type as type FROM ((tiles JOIN sizes ON tiles.sizes_id = sizes.id)
                 JOIN categories ON categories.id = tiles.categories_id) WHERE categories.type='WALL'
                 AND sizes.sizes = '$size_s'";
         $res02 =  $conn->query($sql02);
         if ($res02 == true) {
             while ($row02 = $res02->fetch_assoc()) {
+                $tiles_id2 = $row02['id'];
                 $tiles2 = $row02['tile_model'];
                 $tile_img2 = $row02['tile_img'];
                 $type2 = $row02['type'];
@@ -51,9 +52,10 @@
                                     <div class="content-overlay"></div>
                                     <img class="content-image" src="../assets/images/tiles/<?php echo $tile_img2; ?>">
                                     <div class="content-details fadeIn-left">
-                                        <h4 ><?php echo $tiles2; ?></h4>
+                                        <h4 style="font-size:16px;"><?php echo $tiles2; ?></h4>
                                         <!-- <a href="<?php echo SITE_URL; ?>ceramics/wall.php" target="_blank" class="boxshadow card-button">View  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a> -->
-                                         <a href="#" class="btn card-button boxshadow " data-bs-toggle="modal" data-bs-target="#WallModal">View  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                                         <a href="#" class="btn card-button boxshadow modal-view " data-id="<?php echo $tiles_id2;?>" data-model="<?php echo $tiles2;?>" data-bs-toggle="modal" data-bs-target="#WallModal">View  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                                         
                                     </div>
                              
                             </div>
